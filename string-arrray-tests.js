@@ -11,6 +11,7 @@
  8. Switch the string Ex: First name , Last name
  9. Find largest number in an array
  10.Calculate sum of range numbers in an array
+    - Using regular for loop, reduce method, Max, Min methods
  11.Find white spaces in the character array
     Remove white spaces in the character array
  12.Find a character in the string
@@ -43,6 +44,13 @@
  36. Display the string which doesn't have consecutive repeated characters.
  37. Reverse numbers in an array
  38. Sort the words that are anagrams in an array
+ 39. Print stars in a row (* ** *** **** *****)
+ 40. Find the Prime numbers till the number
+ 41. Count occurrence of number in an Array
+     Count occurrence of number using Reduce method
+ 42. Moving an element in an array to a given position
+ 43. Exclude given numbers from Array
+
 
 
 
@@ -70,9 +78,11 @@ function sort (fruits) {
     console.log('All Apples from array  : ' + appleBox);
     console.log('Everything else in Other box: ' + otherBox);
 }
+console.log(sort(['apple','banana', 'grape','apple']))
+// you can use this too: sort(fruits);
 
-//console.log(sort(['apple','banana', 'grape','apple']))
-console.log(sort(fruits))
+let newFruits = ['mango','kiwi','pineapple','orange','apple'];
+console.log('using sort method: '+newFruits.sort());
 console.log('--------------------------');
 
 //-------------------------
@@ -182,6 +192,19 @@ function eventNum(grade){
 
 console.log(eventNum(grades));
 console.log('--------------------------');
+
+// Find if numbers are even or odd till the input number
+function evenOddNum(num){
+ for ( var i = 0; i < num; i++){
+  if(i % 2 ==0)
+  console.log(i +' EVEN');
+  else
+  console.log(i +' ODD');
+ }
+
+}
+
+console.log(evenOddNum(10));
 //*********************************************
 
 // 6.  Grab all even, odd numbers out of given array
@@ -244,9 +267,9 @@ function reverseString2(str){
 console.log('Reverse string \'California\' using for loop : ' +reverseString2('California'));
 
 
-// Reverse  an array using for loop
+// Reverse an array using for loop
 
-var num2 = [10,20,30,40,50];
+var num2 = [10, 22, 03, 44, 75, 96, 27, 8];
 var newNum = []
 for (var i = num2.length-1; i >= 0; i--){
     newNum.push(num2[i]);
@@ -267,7 +290,7 @@ function reverseArrayInPlace(arr) {
   return arr;
 }
 
-console.log('Reverse array in place: '+reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8]));
+console.log('Reverse array in place: '+reverseArrayInPlace([10, 22, 03, 44, 75, 96, 27, 8]));
 
 console.log('***********************************');
 
@@ -330,6 +353,17 @@ return 'Sum of array num [0,2,3] using for loop is  : ' +sum;
 }
 
 console.log(sumRange([0,2,3]));
+
+// Using reduce method
+
+let reduceNum = [1, 5, 2, 3];
+
+let reduceResult = reduceNum.reduce(function(sum, num){
+  return sum+num;
+
+},0)
+
+console.log ('Sum from an array using Reduce Method: '+reduceResult);
 
 // Using math.max, math.min
 
@@ -685,7 +719,9 @@ function charCount(str){
         }
     }
     return result;
-}
+
+ }
+console.log('character count in a given string: ');
 console.log(charCount('Your PIN numberr is 1234'));
 
 console.log('***********************************');
@@ -1055,14 +1091,117 @@ return anaPerm
 
 }
 console.log(perm(['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop', 'cinema','iceman']));
+console.log('-------------------');
+// Just to check if two words are Anagram
+
+function isAnagram(str1, str2){
+    if (str1.length !== str2.length){
+    return 'Not an Anagram'
+    }
+   var newObj = {};
+   var sortStr1 = str1.split('').sort().join('');
+   var sortStr2 = str2.split('').sort().join('');
+   newObj.str1 = str1;
+   newObj.str2 = str2;
+   console.log(newObj);
+   return (sortStr1 === sortStr2);
+}
+
+console.log(isAnagram('act','cat'));
+
 console.log('***********************************');
 
-var forcast1 = {
-     day:'Mon',
-     sunny:false,
-     temp:100
+//39. Print stars in a row (* ** *** **** *****)
+
+ function showstars(rows){
+ for (let i = 1; i <= rows; i++){
+        let pattern ='';
+        for (var j = 0; j < i; j++){
+        pattern = pattern+'*';
+        }
+        console.log(pattern);
+    }
 }
-forcast1.happy ='yes';
-console.log(forcast1['day']);
-console.log(forcast1);
-console.dir(forcast1);
+console.log(showstars(5));
+console.log('***********************************');
+//-----------------------------------
+//40. Find the Prime numbers till the number
+function showPrimes(limit){
+    for (var number = 2; number <= limit; number++){
+    //  console.log(i);
+       // if (prime(number))
+       var result = true
+       for (var factor = 2; factor < number; factor++){
+                   if (number % factor === 0)
+                   result = false;
+                   }
+             if(result)
+        console.log('Prime number till '+limit +': ' +number);
+    }
+ }
+
+showPrimes(10);
+console.log('***********************************');
+
+//41. Count occurrence of number in an Array
+
+const numbersArray = [1, 2, 3, 4, 5, 5, 5];
+function countOccurrences(array, searchElement) {
+   let count = 0;
+   for (let element of array)
+     if (element === searchElement)
+       count++;
+   return count;
+ }
+const count = countOccurrences(numbersArray, 5);
+console.log('count of 5 in '+numbersArray +' is: '+count);
+
+// Count occurrence of number using Reduce method
+
+const stringArray = ['cat','tap','cat','map'];
+function countOccurrenceReduce(array, searchElement) {
+ var result = array.reduce(function(accumulator, current ){
+    if (current == searchElement)
+        accumulator++;
+      return accumulator
+    },0)
+  return result
+}
+const countReduce = countOccurrenceReduce(stringArray, 'cat');
+console.log('Count of string \'cat\' in Array : ' +stringArray +' is:' +countReduce);
+console.log('***********************************');
+
+//42.Moving an element in an array to a given position
+
+const numbersMove = [1, 2, 3, 4];
+
+function move(array, index, offset) {
+  const position = index + offset;
+  if (position >= array.length || position < 0) {
+    console.error('Invalid offset.');
+    return;
+  }
+
+  const element = array.splice(index, 1)[0];
+  array.splice(position, 0, element);
+  return array;
+}
+const output = move(numbersMove, 0, 1);
+console.log(output);
+
+console.log('***********************************');
+
+//43. Exclude given numbers from Array
+
+const numbersExcept = [1, 2, 3, 5];
+
+function except(array, excluded) {
+  const outputExpect = [];
+  for (let element of array)
+    if (!excluded.includes(element))
+      outputExpect.push(element);
+  return outputExpect;
+}
+const outputResult = except(numbersExcept, [1, 5]);
+
+console.log(outputResult);

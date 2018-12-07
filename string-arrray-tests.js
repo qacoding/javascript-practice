@@ -10,6 +10,7 @@
     Reverse Array In Place
  8. Switch the string Ex: First name , Last name
  9. Find largest number in an array
+    Max using Reduce Method
  10.Calculate sum of range numbers in an array
     - Using regular for loop, reduce method, Max, Min methods
  11.Find white spaces in the character array
@@ -50,6 +51,9 @@
      Count occurrence of number using Reduce method
  42. Moving an element in an array to a given position
  43. Exclude given numbers from Array
+ 44. Remove elements from head of an Array
+ 45. Repeat a String with for loop
+
 
 
 
@@ -322,7 +326,7 @@ console.log('Switch strings \'Kannada dictionary awesome\' : ' +switchName('kann
 console.log('***********************************');
 
 
-// 9. Find largest number in an array
+// 9. Find largest/Max number in an array
 //using Math.max()
 console.log('largest number in an array [3,19,20,5] using Math.max(): ' +Math.max(3,19,20,5));
 
@@ -339,6 +343,19 @@ console.log('largest number in an array [3,19,20,5] using Math.max(): ' +Math.ma
  }
  console.log('largest number in an array [4,2,9] : ' +largeNumber([4,2,9]));
 
+ //Using Reduce Method
+
+ function getMaxReduce(arr){
+     var result = arr.reduce(function(accumulator,current){
+         if(current > accumulator ) return current
+         return accumulator
+     });
+     return result;
+     //return arr.reduce((a, b) => (a > b) ? a : b);
+
+ }
+ console.log(getMaxReduce(testArray));
+
  console.log('***********************************');
 
 
@@ -354,7 +371,7 @@ return 'Sum of array num [0,2,3] using for loop is  : ' +sum;
 
 console.log(sumRange([0,2,3]));
 
-// Using reduce method
+// Sum using reduce method
 
 let reduceNum = [1, 5, 2, 3];
 
@@ -1187,13 +1204,13 @@ function move(array, index, offset) {
   return array;
 }
 const output = move(numbersMove, 0, 1);
-console.log(output);
+console.log('Moving an element 0 to 1 index in an array [1,2,3,4]  :'+output);
 
 console.log('***********************************');
 
 //43. Exclude given numbers from Array
 
-const numbersExcept = [1, 2, 3, 5];
+const numbersExcept = [1, 2, 3, 4,5];
 
 function except(array, excluded) {
   const outputExpect = [];
@@ -1204,4 +1221,30 @@ function except(array, excluded) {
 }
 const outputResult = except(numbersExcept, [1, 5]);
 
-console.log(outputResult);
+console.log('Exclude [1, 5] from [1,2,3,4,5]  :'+outputResult);
+console.log('***********************************');
+
+
+//44.Remove elements from head of an Array
+
+let chop = ['abc','dsdsd', 'jan','feb','march','april','may'];
+function chopper(arr, excess){
+    arr.splice(0,excess);
+    return arr
+}
+
+console.log(chopper(chop,2));
+console.log('***********************************');
+
+
+//45. Repeat a String with for loop
+
+function repeatWord(str,no){
+let repeatStr = '';
+    for ( let i = 0; i < no; i++){
+     repeatStr = repeatStr + str;
+    }
+    return repeatStr;
+}
+
+console.log(repeatWord('car', 4));

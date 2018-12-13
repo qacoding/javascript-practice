@@ -53,7 +53,9 @@
  43. Exclude given numbers from Array
  44. Remove elements from head of an Array
  45. Repeat a String with for loop
-
+ 46. FizBuzz (1-100 numbers with multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
+ 47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
+ 48. ***IMP****Merge Sort to sort the numbers in an Array
 
 
 
@@ -345,6 +347,7 @@ console.log('largest number in an array [3,19,20,5] using Math.max(): ' +Math.ma
 
  //Using Reduce Method
 
+const testArray = [2,67,45,99,123,78];
  function getMaxReduce(arr){
      var result = arr.reduce(function(accumulator,current){
          if(current > accumulator ) return current
@@ -913,7 +916,9 @@ function sorter(array)
    return array;
 }
 
-console.log(sorter([4, 10, 2, 9, 11, 3, 13, 5]));
+//console.log(sorter([4, 10, 2, 9, 11, 3, 13, 5]));
+//console.log(sorter([20, 20, 31, 56, 1, 12, 12]));
+console.log(sorter([3, -9, -12,  -1, 12]));
 
 function sorterDesc(array)
 {
@@ -1125,7 +1130,6 @@ function isAnagram(str1, str2){
 }
 
 console.log(isAnagram('act','cat'));
-
 console.log('***********************************');
 
 //39. Print stars in a row (* ** *** **** *****)
@@ -1247,4 +1251,81 @@ let repeatStr = '';
     return repeatStr;
 }
 
-console.log(repeatWord('car', 4));
+console.log('Repeat string: '+repeatWord('car', 4));
+console.log('***********************************');
+
+//46. Write a program that prints all the numbers from 1 to 100.
+//For multiples of 3, instead of the number, print "Fizz",
+//for multiples of 5 print "Buzz".
+//For numbers which are multiples of both 3 and 5, print "FizzBuzz".
+
+function FizBizz(){
+    for(let i = 1; i < 100; i++){
+        if(i % 3 == 0 && i % 5 == 0){
+            console.log('FizzBuzz')
+            }
+        else if(i % 3 == 0){
+            console.log('Fizz');
+        }
+        else if(i % 5 == 0){
+            console.log('Buzz');
+        }
+        else console.log(i);
+    }
+}
+FizBizz();
+console.log('***********************************');
+
+//47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
+//characterized by the fact that every number after the first two is the sum of the two preceding ones
+
+function fib(n){
+  let arr = [0, 1];
+  for (let i = 2; i < n + 1; i++){
+    arr.push(arr[i - 2] + arr[i -1])
+  }
+ // used ES6 Template literal in below console.(` is called tick)
+ console.log(`Fibonacci series for ${n} is: ${arr}`);
+ return arr[n]
+}
+
+console.log(`Element on Fib series in given Index is :`+fib(8));
+
+// Fib series using Recursive method
+
+function fibRecursive(n) {
+  if (n < 2){
+    return n
+  }
+  return fibRecursive(n - 1) + fibRecursive(n - 2)
+}
+console.log('Element on Fib series in given Index using RECURSIVE is :'+fibRecursive(8));
+
+console.log('***********************************');
+//48. ***IMP****Merge Sort to sort the numbers in an Array
+
+function mergeSort (arr) {
+    if (arr.length < 2) return arr;
+    var middleIndex = Math.floor(arr.length / 2);
+    var firstHalf = arr.slice(0, middleIndex);
+    var secondHalf = arr.slice(middleIndex);
+
+    return merge(mergeSort(firstHalf), mergeSort(secondHalf));
+}
+
+function merge (array1, array2) {
+    var result = [];
+    while (array1.length && array2.length) {
+      var minElem;
+      if (array1[0] < array2[0]) minElem = array1.shift();
+      else minElem = array2.shift();
+      result.push(minElem);
+    }
+
+    if (array1.length) result = result.concat(array1);
+    else result =result.concat(array2);
+    return result;
+}
+
+console.log(mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1]));
+

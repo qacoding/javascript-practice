@@ -1302,7 +1302,11 @@ function fibRecursive(n) {
 console.log('Element on Fib series in given Index using RECURSIVE is :'+fibRecursive(8));
 
 console.log('***********************************');
+
 //48. ***IMP****Merge Sort to sort the numbers in an Array
+//Code Merge Sort: Merge sort has two parts. Main part does divide or breaks down and second part is merging/combining parts. At the time of combining, parts are combined together.
+//Divide: the first function named as mergeSort is actually a divide function. where an array is divided into two.
+//merge: this is just merging two sorted array. Just be careful this two array could be in different size
 
 function mergeSort (arr) {
     if (arr.length < 2) return arr;
@@ -1326,6 +1330,21 @@ function merge (array1, array2) {
     else result =result.concat(array2);
     return result;
 }
-
+console.log('sort the numbers in an array using MergeSort method:')
 console.log(mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1]));
+console.log('***********************************');
 
+//49.Capitalize first character in a word in a sentence
+
+function firstCharCapital(word){
+let newWord = word.split(' ');
+let result = []
+for( let char of newWord){
+// char.slice(1) gets the remaining of the word except first letter Ex: apital f merica
+    var upperCase = char[0].toUpperCase()+ char.slice(1);
+    result.push(upperCase);
+}
+    return result.join(' ');
+}
+console.log('Capitalize first letter in a word of a given sentence:')
+console.log(firstCharCapital( 'a capital of america'));

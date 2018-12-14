@@ -1348,3 +1348,41 @@ for( let char of newWord){
 }
 console.log('Capitalize first letter in a word of a given sentence:')
 console.log(firstCharCapital( 'a capital of america'));
+
+console.log('***********************************');
+
+//50. Number of vowels in a string
+
+function vowel(str){
+    var newStr = str.toLowerCase();
+    let count = 0;
+    let checker = ['a','e','i','o','u'];
+    for (let char of newStr){
+        if(checker.includes(char)){
+            count++
+
+        }
+    }
+    console.log(`Number of vowels in string using 'string.includes' method: ${str}`)
+    return count;
+}
+console.log(vowel('pTioue'));
+
+
+// Find vowel count using Regex
+function vowelRegex(str){
+    str = str.toLowerCase();
+    let countee = 0;
+    var regex = /[aeiou]/i;
+    for (let num of str){
+        if (regex.test(num)){
+            countee++
+        }
+    }
+    console.log(`Number of vowels in string using 'Regex.test': ${str}`)
+    return countee;
+}
+
+console.log(vowelRegex('Mnefiyo'));
+
+console.log('***********************************');

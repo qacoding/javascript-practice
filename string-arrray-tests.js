@@ -56,6 +56,10 @@
  46. FizBuzz (1-100 numbers with multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
  47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
  48. ***IMP****Merge Sort to sort the numbers in an Array
+ 50. Number of vowels in a string using string.includes method
+     Find vowel count using Regex
+     Using  str.match(regex) method
+
 
 
 
@@ -1371,9 +1375,8 @@ console.log(vowel('pTioue'));
 
 // Find vowel count using Regex
 function vowelRegex(str){
-    str = str.toLowerCase();
     let countee = 0;
-    var regex = /[aeiou]/i;
+    var regex = /[aeiou]/ig;
     for (let num of str){
         if (regex.test(num)){
             countee++
@@ -1384,5 +1387,13 @@ function vowelRegex(str){
 }
 
 console.log(vowelRegex('Mnefiyo'));
+
+// Using  str.match(regex) method
+function regexMatch(str){
+    const result = str.match(/[aeiou]/ig);
+    if (result.length) return result.length
+    else return 0;
+}
+console.log(regexMatch('oiuoiuoiu'));
 
 console.log('***********************************');

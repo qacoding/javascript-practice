@@ -964,48 +964,53 @@ function charMapping(str){
     }
     console.log('characters and count in a string: ');
     console.log(charMap);
+
+ // Now loop through the object
     for (var char in charMap){
         //console.log(charMap[char]);
         if (charMap[char] > max){
             max = charMap[char];
-            // console.log(max);
+           //  console.log(max);
             maxChar = char;
         }
     }
-    return maxChar;
+    return (`${maxChar} -  ${max}`);
 }
 
 console.log('Max character repeated in a string: ' +charMapping('hello world'));
 console.log('***********************************');
 
-// above question using split method
+// above question using split method and storing in array instead of Object
+
 function letterCount(str){
     //var str = 'america is great';
     var chars = str.split('');
-    var letCount = {};
+    var letCount = [];
     var max = 0;
     var maxChar = '';
     //console.log(newStr);
 
     for ( var i = 0; i < chars.length; i++){
-        //console.log(newStr[i]);
+       // console.log(chars[i]);
         if ( letCount[chars[i]]){
             // letCount[chars[i]] = 0;
             letCount[chars[i]]++;
         }else
         letCount[chars[i]] = 1;
     }
-    for( var char in letCount){
-        console.log( char +':'+letCount[char]);
+    console.log(letCount);
+
+
+    for(var char of str){
         if ( letCount[char] > max){
             max = letCount[char];
             maxChar = char;
         }
     }
-    return ('Max repeated character is :' + maxChar );
+    return (`Max repeated character is :' ${maxChar} - ${max} `);
 }
 
-console.log(letterCount('hello world'));
+console.log(letterCount('hello wwwworld'));
 
 console.log('***********************************');
 
@@ -1321,6 +1326,7 @@ function mergeSort (arr) {
     return merge(mergeSort(firstHalf), mergeSort(secondHalf));
 }
 
+// Below function merges sorted array1, array2 in correct order
 function merge (array1, array2) {
     var result = [];
     while (array1.length && array2.length) {
@@ -1364,7 +1370,6 @@ function vowel(str){
     for (let char of newStr){
         if(checker.includes(char)){
             count++
-
         }
     }
     console.log(`Number of vowels in string using 'string.includes' method: ${str}`)
@@ -1388,7 +1393,7 @@ function vowelRegex(str){
 
 console.log(vowelRegex('Mnefiyo'));
 
-// Using  str.match(regex) method
+// Find Vowel count using str.match(regex) method
 function regexMatch(str){
     const result = str.match(/[aeiou]/ig);
     if (result.length) return result.length
@@ -1397,3 +1402,15 @@ function regexMatch(str){
 console.log(regexMatch('oiuoiuoiu'));
 
 console.log('***********************************');
+
+function nonRepeat(str){
+    for(var i = 0; i < str.length; i++){
+      //  console.log(str[i]);
+        if(str.indexOf(str[i]) == str.lastIndexOf(str[i])){
+        console.log(str[i])
+        break;
+        }
+    }
+}
+
+console.log(nonRepeat('A@lovelo'));

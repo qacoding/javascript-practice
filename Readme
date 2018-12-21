@@ -1,0 +1,3 @@
+To run the file
+1. execute node "filename"
+ex: node string-array-tests.js

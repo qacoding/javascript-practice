@@ -792,33 +792,33 @@ console.log('***********************************');
 //28.Find the max consecutive repetitive character
 
 function longest(seq){
-var count = 0;
-var max_count=0;
-var max_char;
-var prev_char;
+    var count = 0;
+    var max_count=0;
+    var max_char;
+    var prev_char;
+// you can use  prev_char = seq[0] then for loop : for (let i = 1; i < seq.length; i++){}
+    for(var current of seq){
+        //console.log(current);
+        if( current == prev_char ){
+            count  = count+1;
+        }else{
+            count = 1;
+        }
 
-for(var current of seq){
-    //console.log(current);
-    if( current == prev_char ){
-        count  = count+1;
-    }else{
-        count = 1;
+        if(count > max_count){
+            max_count = count;
+            max_char = current;
+        }
+        prev_char = current;
     }
-
-    if(count > max_count){
-        max_count = count;
-        max_char = current;
-    }
-    prev_char = current;
-}
-console.log('Max consecutive in string: ' +seq);
-return (max_char +':'+ max_count);
+    console.log('Max consecutive in string: ' +seq);
+    return (max_char +':'+ max_count);
 }
 console.log(longest('aaeeeedd'));
 
 console.log('***********************************');
 
-// 29.Pairs whose sum is n
+//29.Pairs whose sum is n
 //ex: A = [1,2,4,-6,5,7,9,....]
 //B = {3, 6, 3, 4, 0 .......}
 //n = 5 -> pairs whose sum is n
@@ -847,9 +847,9 @@ function reverseWord(str){
      if(str.length > 0){
            for( var i = 0; i < arr.length; i++){
                 var newArr = arr[i].split('');
-                //console.log(newArr);
+               // console.log(newArr);
                  for( var j = newArr.length; j >= 0; j--){
-                     //console.log()
+                 //    console.log(resultStr)
                         resultStr.push(newArr[j]);
                     }
             }
@@ -1495,3 +1495,4 @@ function sumArr(arr){
 
 console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20]));
 console.log('***********************************');
+

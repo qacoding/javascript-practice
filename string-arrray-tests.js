@@ -59,6 +59,10 @@
  50. Number of vowels in a string using string.includes method
      Find vowel count using Regex
      Using  str.match(regex) method
+ 51. Non-Repeating character in a string
+ 52. Given an array say [0,1,2,3,5,6,7,11,12,14,20]
+    //  given a number say 5.
+    //  Now find the sum of elements which sum to 5
 
 
 
@@ -855,43 +859,24 @@ function reverseWord(str){
 console.log('Reverse all letters of each word: '+ reverseWord('I am Human'));
 
 console.log('***********************************');
-//Given an array say [0,1,2,3,5,6,7,11,12,14,20]
-//  given a number say 5.
-//  Now find the sum of elements which sum to 5
-//  eg:2+3=5, 0+5=5 etc.
-function sumArr(arr){
-    var sum = 5;
-    var result = 0;
-    //console.log(arr);
-    for(var i = 0; i < arr.length; i++ ){
-        //console.log(arr[i]);
-           for(var j = i+1; j < arr.length; j++){
-                var result = arr[i]+arr[j];
-                if(result == sum){
-                    console.log(arr[i],arr[j]);
-                }
-           }
-    }
-    return (arr[i],arr[j]);
-}
-
-console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20]));
-console.log('***********************************');
 
 //31. Arrange Array in Ascending and Descending order using sort()
-//sort() method will produce an incorrect result when sorting numbers.
+//By default, the sort() function sorts values as strings.
+//This works well for strings ("Apple" comes before "Banana").
+//However, if numbers are sorted as strings, "25" is bigger than "100", because "2" is bigger than "1".
+//Because of this, the sort() method will produce incorrect result when sorting numbers.
 //You can fix this by providing a "compare function"
 
 function ascending(arr1){
-var ascendOrder = arr1.sort(function(a,b){return a-b} );
-return ascendOrder;
+    var ascendOrder = arr1.sort(function(a,b){return a-b} );
+    return ascendOrder;
 }
 console.log('ascending order:');
 console.log(ascending([40, 100, 1, 5, 25, 10]));
 
 function descending(arr2){
-var descendOrder = arr2.sort(function(a,b){return b-a} );
-return descendOrder;
+    var descendOrder = arr2.sort(function(a,b){return b-a} );
+    return descendOrder;
 }
 console.log('descending order:')
 console.log(descending([40, 100, 1, 5, 25, 10]));
@@ -899,7 +884,7 @@ console.log('***********************************');
 
 
 
-//32.Ascending, Descending  order without using sort() method
+//32.Ascending, Descending  order NOT using sort() method
 console.log('Ascending,Descending order not using sort()');
 function sorter(array)
 {
@@ -923,6 +908,8 @@ function sorter(array)
 //console.log(sorter([4, 10, 2, 9, 11, 3, 13, 5]));
 //console.log(sorter([20, 20, 31, 56, 1, 12, 12]));
 console.log(sorter([3, -9, -12,  -1, 12]));
+
+//Sort numbers in Descending order
 
 function sorterDesc(array)
 {
@@ -966,6 +953,8 @@ function charMapping(str){
     console.log(charMap);
 
  // Now loop through the object
+ //The for/in statement loops through the properties of an object.
+
     for (var char in charMap){
         //console.log(charMap[char]);
         if (charMap[char] > max){
@@ -1015,12 +1004,15 @@ console.log(letterCount('hello wwwworld'));
 console.log('***********************************');
 
 // 34. Max character repeated in a string using split(char) method
+//The split() method is used to split a string into an array of substrings, and returns the new array.
+// Here the logic is when split by char, substring created as a result has length more than max that means that character is the most repeated character.
+
 var getMax = function (str) {
     var max = 0,
     maxChar = '';
     for ( var char of str ){
    // console.log(char);
-      //  console.log(str.split(char), str.split(char).length, max, maxChar);
+       // console.log(str.split(char), str.split(char).length, max, maxChar);
         if (str.split(char).length > max){
             max = str.split(char).length;
             maxChar = char;
@@ -1040,13 +1032,13 @@ function repeat(str){
         for (var i = 0; i < char.length; i++){
           //  console.log(char[i]);
             //  console.log(char.indexOf(char[i]));
-            if ( char.indexOf(char[i]) !== char.lastIndexOf(char[i])){
+            if (char.indexOf(char[i]) !== char.lastIndexOf(char[i])){
                 //console.log()
-                console.log ('duplicate found');
-                return 'duplicate'
+                console.log (`${char}: duplicate letters found`);
+               return 'duplicate'
             }
         }
-        console.log( 'unique');
+        console.log( `${char}: UNIQUE letters found`);
     })
 }
 
@@ -1055,6 +1047,7 @@ function repeat(str){
 
 
 //36. Display the string which doesn't have consecutive repeated characters.
+//The charAt() method returns the character at the specified index in a string.
  function repeatChar(str){
      str.forEach(function(char){
          //  console.log(char);
@@ -1070,14 +1063,14 @@ function repeat(str){
              // you can use this:  prev = char.charAt(i);
              prev = char[i];
          }
-         console.log(char+ ': unique');
+         console.log(char+ ': No consecutive repeated characters');
      })
  }
   console.log(repeatChar(['google','yahoo', 'amazon']));
   console.log('***************************');
 
 //37. Reverse numbers in an array
-var c = [6,1,7,2];
+var c = [6,1,7,2,6];
 console.log(c);
 function texting(arr){
     for(var i=0; i<arr.length/2; i++ ){
@@ -1096,11 +1089,11 @@ console.log(texting(c));
 var d = [6,1,7,2];
 console.log(d);
 var dd = [];
-for (var i = d.length; i >= 0; i-- ){
+for (var i = d.length-1; i >= 0; i-- ){
 dd.push(d[i]);
 
 }
-console.log('Reverse : '+dd);
+console.log(`Reverse of ${d} : ${dd}`);
 console.log('***********************************');
 
 //38. sort the words that are anagrams in an array
@@ -1123,6 +1116,7 @@ return anaPerm
 }
 console.log(perm(['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop', 'cinema','iceman']));
 console.log('-------------------');
+
 // Just to check if two words are Anagram
 
 function isAnagram(str1, str2){
@@ -1156,6 +1150,10 @@ console.log(showstars(5));
 console.log('***********************************');
 //-----------------------------------
 //40. Find the Prime numbers till the number
+//Prime numbers are numbers that are bigger than one and cannot be divided evenly by any other number except 1 and itself.
+//Prime number should NOT be divisible by 2
+//Ex: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61,
+
 function showPrimes(limit){
     for (var number = 2; number <= limit; number++){
     //  console.log(i);
@@ -1171,6 +1169,7 @@ function showPrimes(limit){
  }
 
 showPrimes(10);
+
 console.log('***********************************');
 
 //41. Count occurrence of number in an Array
@@ -1186,7 +1185,26 @@ function countOccurrences(array, searchElement) {
 const count = countOccurrences(numbersArray, 5);
 console.log('count of 5 in '+numbersArray +' is: '+count);
 
+//Using reduce method
+function countOccrReduce(arr,num){
+    var result = arr.reduce(function(total,current){
+        if(current == num)
+        total ++
+        return total;
+    },0)
+    console.log(`Count of '5' in ${arr} using reduce method: ${result}`);
+    return result;
+}
+countOccrReduce([1, 2, 3, 4, 5, 5, 5], 5);
+
+
+
+
 // Count occurrence of number using Reduce method
+//The reduce() method reduces the array to a single value.
+//The reduce() method executes a provided function for each value of the array (from left-to-right).
+//The return value of the function is stored in an accumulator (result/total).
+// 0 is a initialValue: Optional. A value to be passed to the function as the initial value
 
 const stringArray = ['cat','tap','cat','map'];
 function countOccurrenceReduce(array, searchElement) {
@@ -1202,6 +1220,11 @@ console.log('Count of string \'cat\' in Array : ' +stringArray +' is:' +countRed
 console.log('***********************************');
 
 //42.Moving an element in an array to a given position
+//The splice() method adds/removes items to/from an array, and returns the removed item(s).
+//array.splice(index, howmany, item1, ....., itemX)
+//index: An integer that specifies at what position to add/remove items;
+// "how many" : The number of items to be removed. If set to 0, no items will be removed;
+//item1, ..., itemX	Optional. The new item(s) to be added to the array
 
 const numbersMove = [1, 2, 3, 4];
 
@@ -1219,6 +1242,20 @@ function move(array, index, offset) {
 const output = move(numbersMove, 0, 1);
 console.log('Moving an element 0 to 1 index in an array [1,2,3,4]  :'+output);
 
+// Another easy way for above problem
+// Assign fromIndex to variable "element" i.e 1 .
+// Remove one element from "fromIndex" using arr.splice(fromIndex, 1); Result : [2,3,4,5]
+// Now move fromIndex position 0 (Number 1) to toIndex position 2 (after number 3). Result: 2,3,1,4,5:
+function arraymove(arr, fromIndex, toIndex) {
+    var element = arr[fromIndex];
+    arr.splice(fromIndex, 1);
+    arr.splice(toIndex, 0, element);
+    console.log(`Moving element from ${fromIndex} to ${toIndex} in an array [1,2,3,4,5]: ${arr} `)
+    return arr;
+}
+
+arraymove([1,2,3,4,5],0,2);
+
 console.log('***********************************');
 
 //43. Exclude given numbers from Array
@@ -1226,11 +1263,12 @@ console.log('***********************************');
 const numbersExcept = [1, 2, 3, 4,5];
 
 function except(array, excluded) {
-  const outputExpect = [];
-  for (let element of array)
-    if (!excluded.includes(element))
-      outputExpect.push(element);
-  return outputExpect;
+    const outputExpect = [];
+    for (let element of array){
+        if (!excluded.includes(element))
+        outputExpect.push(element);
+    }
+    return outputExpect;
 }
 const outputResult = except(numbersExcept, [1, 5]);
 
@@ -1238,7 +1276,7 @@ console.log('Exclude [1, 5] from [1,2,3,4,5]  :'+outputResult);
 console.log('***********************************');
 
 
-//44.Remove elements from head of an Array
+//44.Remove elements from head of an Array using splice() method
 
 let chop = ['abc','dsdsd', 'jan','feb','march','april','may'];
 function chopper(arr, excess){
@@ -1250,7 +1288,7 @@ console.log(chopper(chop,2));
 console.log('***********************************');
 
 
-//45. Repeat a String with for loop
+//45. Repeat a String with for loop for given number of times
 
 function repeatWord(str,no){
 let repeatStr = '';
@@ -1269,7 +1307,7 @@ console.log('***********************************');
 //For numbers which are multiples of both 3 and 5, print "FizzBuzz".
 
 function FizBizz(){
-    for(let i = 1; i < 100; i++){
+    for(let i = 1; i < 20; i++){
         if(i % 3 == 0 && i % 5 == 0){
             console.log('FizzBuzz')
             }
@@ -1295,10 +1333,11 @@ function fib(n){
   }
  // used ES6 Template literal in below console.(` is called tick)
  console.log(`Fibonacci series for ${n} is: ${arr}`);
- return arr[n]
+ return arr;
 }
 
-console.log(`Element on Fib series in given Index is :`+fib(8));
+//console.log(`Element on Fib series in given Index is :`+fib(8));
+fib(8);
 
 // Fib series using Recursive method
 
@@ -1331,9 +1370,11 @@ function merge (array1, array2) {
     var result = [];
     while (array1.length && array2.length) {
       var minElem;
-      if (array1[0] < array2[0]) minElem = array1.shift();
-      else minElem = array2.shift();
-      result.push(minElem);
+      if (array1[0] < array2[0]){
+       minElem = array1.shift();
+      }else
+       minElem = array2.shift();
+       result.push(minElem);
     }
 
     if (array1.length) result = result.concat(array1);
@@ -1347,16 +1388,16 @@ console.log('***********************************');
 //49.Capitalize first character in a word in a sentence
 
 function firstCharCapital(word){
-let newWord = word.split(' ');
-let result = []
-for( let char of newWord){
-// char.slice(1) gets the remaining of the word except first letter Ex: apital f merica
-    var upperCase = char[0].toUpperCase()+ char.slice(1);
-    result.push(upperCase);
-}
+    let newWord = word.split(' ');
+    let result = []
+    for( let char of newWord){
+        // char[0] gets the first letter in a word (a c o a) and char.slice(1) gets the remaining of the word except first letter Ex: apital f merica
+        var upperCase = char[0].toUpperCase().concat( char.slice(1));
+        result.push(upperCase);
+    }
+    console.log(`Capitalize first letter in a word of a given sentence: ${word}`);
     return result.join(' ');
 }
-console.log('Capitalize first letter in a word of a given sentence:')
 console.log(firstCharCapital( 'a capital of america'));
 
 console.log('***********************************');
@@ -1387,30 +1428,70 @@ function vowelRegex(str){
             countee++
         }
     }
-    console.log(`Number of vowels in string using 'Regex.test': ${str}`)
+    console.log(`Number of vowels in string using 'Regex.test': ${str}`);
     return countee;
 }
 
 console.log(vowelRegex('Mnefiyo'));
 
-// Find Vowel count using str.match(regex) method
+//Find Vowel count using str.match(regex) method
 function regexMatch(str){
     const result = str.match(/[aeiou]/ig);
+    console.log(`Number of vowels in string using 'str.match() method': ${str}`)
     if (result.length) return result.length
     else return 0;
 }
+
 console.log(regexMatch('oiuoiuoiu'));
 
 console.log('***********************************');
+
+//51.Non-Repeating character in a string
 
 function nonRepeat(str){
     for(var i = 0; i < str.length; i++){
       //  console.log(str[i]);
         if(str.indexOf(str[i]) == str.lastIndexOf(str[i])){
-        console.log(str[i])
+        console.log(`Non-Repeating character in a string ${str}: ${str[i]}`);
         break;
         }
     }
 }
 
-console.log(nonRepeat('A@lovelo'));
+// using for..of loop
+/*function nonRepeat(str){
+    for(let char of str){
+      //  console.log(str[i]);
+        if(char.indexOf(char) == char.lastIndexOf(char)){
+        console.log(`Non-Repeating character in a string ${str}: ${char}`);
+        break;
+        }
+    }
+}*/
+
+console.log(nonRepeat('@lovelo'));
+
+console.log('***********************************');
+
+//51.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
+//  given a number say 5.
+//  Now find the sum of elements which sum to 5
+//  eg:2+3=5, 0+5=5 etc.
+function sumArr(arr){
+    var sum = 5;
+    var result = 0;
+    //console.log(arr);
+    for(var i = 0; i < arr.length; i++ ){
+        //console.log(arr[i]);
+           for(var j = i+1; j < arr.length; j++){
+                var result = arr[i]+arr[j];
+                if(result == sum){
+                    console.log(arr[i],arr[j]);
+                }
+           }
+    }
+    return (arr[i],arr[j]);
+}
+
+console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20]));
+console.log('***********************************');

@@ -20,10 +20,16 @@
  14.Find absolute value of a number
  15.Remove Duplicate ones from array
  16.Palindrome
+    - Using str.split('').reverse().join('');
+    - Using str.split(''); then reverse array using for loop; now reversedArray.join(); compare reverseArray with str
+    - Testing Palindrome using push() and pop() methods.
+    - Test palindrome for long sentence(Manadm I'm Adam).string.toLowerCase().split(''); validChars = 'abcdefghijklmnopqrstuvwxyz'.split('');..
+    - Test palindrome using Regex(to remove special chars).str.toLowerCase().replace(/[^a-z]/gi,'').split('').join('');str.toLowerCase().replace(/[^a-z]/gi,'').split('').reverse().join('');
  17.JSON.stringify() method converts a JavaScript value to a JSON string
- 18.Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+ 18.Parse the data with JSON.parse(), and the data becomes a JavaScript object.(A common use of JSON is to exchange data to/from a web server; When receiving data from a web server, the data is always a string.
  19.Fastest way to find duplicates between two arrays javascript
- 20.To remove duplicates from two arrays
+ 20.To remove duplicates from two numbers arrays
+    To remove duplicates from single number Array
  21.Filter method to check if num is greater than another num
  22.Filter method to retrieve data from array object
  23. Map method example(multiply numbers in an array)
@@ -147,6 +153,27 @@ function long (str){
 }
 
 console.log('Longest word in text "this is english dictionary :" ' +long(text) );
+
+// LONGEST word using reduce method
+
+ let texting2 = 'this is our world!'
+  function longReduce (str){
+      var newstr = str.split(' ');
+     // console.log(newstr);
+     var result = newstr.reduce(function(longest,name){
+          if (name.length > longest.length){
+             longest = name;
+          }
+         return longest;
+
+     })
+
+      console.log('Longest word length is :'+result.length);
+      return result;
+  }
+
+  console.log('Longest word in text "this is our world! :" ' +longReduce(texting2) );
+
 console.log('--------------------------');
 
 //*******************************************
@@ -488,6 +515,7 @@ console.log('***********************************');
 // This method returns -1 if the value to search for never occurs.
 
 
+
 let ab = ["Banana", "Orange", "Apple", "Mango", "Mango", "Apple"];
 let bb = [];
 
@@ -499,6 +527,7 @@ for(let i=0; i < ab.length; i++){
     }
 }
 console.log(bb.sort());
+
 console.log('***********************************');
 
 
@@ -517,6 +546,7 @@ function palindrome(str){
 
 console.log('is gadag a palindrome?'+palindrome('gadag'));
 
+// Testing Palindrome without using 'reverse()' function
 function palindromeString(str){
     var newStr = str.split('');
     var resultStr = [];
@@ -532,6 +562,28 @@ function palindromeString(str){
 }
 
 console.log(palindromeString('gadag'));
+
+
+
+// Testing Palindrome using push() and pop() methods.
+function pali(str){
+var resultPali = [];
+var popResult = '';
+    for (var i = 0; i < str.length;  i++){
+    resultPali.push(str[i]);
+    }
+
+    for(var j = 0; j < str.length; j++){
+    popResult = popResult+resultPali.pop();
+    }
+
+    if(str == popResult){
+     console.log(`word  ${str} is a Palindrome`)
+    } else
+     console.log(`word  ${str} is Not a Palindrome`);
+}
+
+pali('racecar');
 
 // This one to test palindrome for long sentence
 function isPalindrome(string) {
@@ -558,7 +610,7 @@ function isPalindrome(string) {
 
 console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ isPalindrome("Madam I'm Adam"));
 
-// Another way to check Palindrome
+// Another way to check Palindrome using Regex
 
 function palin(str){
         var inputStr  = str.toLowerCase().replace(/[^a-z]/gi,'').split('').join('');
@@ -620,12 +672,12 @@ console.log('***********************************');
 // 20. To remove duplicates from two arrays
 
 var a = [1,2,3,3];
-var b = [7,7,4,5];
+var b = [7,7,4,5,12];
 var c = [];
 
-for (var i in a){
-    if(c.indexOf(a[i]) === -1){
-        c.push(a[i]);
+for (var i of a){
+    if(c.indexOf(i) === -1){
+        c.push(i);
     }
 }
 /*for(let i=0; i < ab.length; i++){
@@ -635,13 +687,35 @@ bb.push(ab[i]);
 }
 }*/
 
-for (var j in b){
-    if(c.indexOf(b[j]) === -1){
-        c.push(b[j]);
+for (var j of b){
+    if(c.indexOf(j) === -1){
+        c.push(j);
         }
 }
 console.log(a,b);
 console.log('Removed duplicates from two arrays: '+c);
+
+
+ // To remove duplicates from single Array
+
+console.log('--------------------');
+ var single = [33,45,45,22,22,1,99,5,5]
+ // below is sorting an array and assigning it to newSingle array.
+ var newSingle =  single.sort(function(a,b){
+  return(a-b);
+  });
+ //console.log(newSingle);
+ function removeDuplicate(singleArray){
+    var resultArray = [];
+    for (let i of singleArray){
+      if(resultArray.indexOf(i) === -1){
+            resultArray.push(i)
+        }
+    }
+    return resultArray;
+  }
+
+console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`);
 console.log('***********************************');
 
 //21.Filter method to check if num is greater than another num
@@ -1204,7 +1278,7 @@ countOccrReduce([1, 2, 3, 4, 5, 5, 5], 5);
 //The reduce() method reduces the array to a single value.
 //The reduce() method executes a provided function for each value of the array (from left-to-right).
 //The return value of the function is stored in an accumulator (result/total).
-// 0 is a initialValue: Optional. A value to be passed to the function as the initial value
+// 0 is a initialValue: Optional. A value to be passed to the function as the initial value or else it takes first element in the array as initial accumulator value
 
 const stringArray = ['cat','tap','cat','map'];
 function countOccurrenceReduce(array, searchElement) {
@@ -1473,7 +1547,7 @@ console.log(nonRepeat('@lovelo'));
 
 console.log('***********************************');
 
-//51.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
+//52.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
 //  given a number say 5.
 //  Now find the sum of elements which sum to 5
 //  eg:2+3=5, 0+5=5 etc.
@@ -1495,4 +1569,16 @@ function sumArr(arr){
 
 console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20]));
 console.log('***********************************');
+
+console.log(['a','b']+['c','d']);
+console.log(true+false);
+const strObj = new String('abc');
+console.log(typeof(strObj));
+console.log(typeof(Number('1')));
+//The toString() function in Javascript is used with a number and converts the number to a string.
+var nuum =1
+console.log(typeof( nuum.toString()));
+//The parseInt() function parses a string and returns an integer.
+console.log(typeof(parseInt('1')));
+
 

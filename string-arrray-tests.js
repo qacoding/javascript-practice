@@ -30,6 +30,9 @@
  19.Fastest way to find duplicates between two arrays javascript
  20.To remove duplicates from two numbers arrays
     To remove duplicates from single number Array
+    To remove duplicates from two array using Sets
+    To get the common/repeated/duplicate elements from two arrays
+    To get the common/repeated/duplicate elements from two Arrays using Sets
  21.Filter method to check if num is greater than another num
  22.Filter method to retrieve data from array object
  23. Map method example(multiply numbers in an array)
@@ -716,6 +719,48 @@ console.log('--------------------');
   }
 
 console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`);
+
+//To remove duplicates from two array using Sets
+function uniqueArray(arr1, arr2) {
+    var unionSet = new Set(arr1);
+    for (var elem of arr2) {
+        unionSet.add(elem);
+    }
+    return unionSet;
+}
+
+console.log(uniqueArray([1,2,3,3,310],[1,2,3,4,5]));
+
+ // To get the common/repeated/duplicate elements from two arrays
+function commonElements(a,b){
+console.log(a,b)
+  var c = [];
+ for (var i of b){
+
+ //console.log(i);
+ //console.log(a.indexOf(i))
+   if(a.indexOf(i) >= 1 ){
+    c.push(i)
+   }
+ }
+ return c
+}
+console.log(commonElements([1,2,3,4],[2,3,4,5,6,1]))
+
+//To get the common/repeated/duplicate elements from two Arrays using Sets
+function dupValue(arr1,arr2){
+    var set1 = new Set(arr1);
+    var result = new Set();
+     for (var elem of arr2){
+      if(set1.has(elem)){
+        result.add(elem)
+       }
+     }
+    return (Array.from(result).sort())
+}
+
+console.log(dupValue([1,2,3,4],[2,3,6,7,1]));
+
 console.log('***********************************');
 
 //21.Filter method to check if num is greater than another num
@@ -1580,5 +1625,7 @@ var nuum =1
 console.log(typeof( nuum.toString()));
 //The parseInt() function parses a string and returns an integer.
 console.log(typeof(parseInt('1')));
+
+
 
 

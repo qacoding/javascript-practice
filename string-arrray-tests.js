@@ -72,7 +72,8 @@
  52. Given an array say [0,1,2,3,5,6,7,11,12,14,20]
     //  given a number say 5.
     //  Now find the sum of elements which sum to 5
-
+ 53. Find second minimum number from Array(My way)
+ 54.Find second largest number in Array
 
 
 
@@ -1026,7 +1027,7 @@ function sorter(array)
 
 //console.log(sorter([4, 10, 2, 9, 11, 3, 13, 5]));
 //console.log(sorter([20, 20, 31, 56, 1, 12, 12]));
-console.log(sorter([3, -9, -12,  -1, 12]));
+console.log(sorter([3, -9, -12,  -1, 12, 100,9,4]));
 
 //Sort numbers in Descending order
 
@@ -1626,6 +1627,60 @@ console.log(typeof( nuum.toString()));
 //The parseInt() function parses a string and returns an integer.
 console.log(typeof(parseInt('1')));
 
+console.log('***********************************');
 
+//53. Find second minimum number from Array(My way)
+var arrSec = [1,5,3,1,7,100,24,45,99,0];
+//var newArrSec = arrSec.sort(function(a,b){
+//  return a-b
+//});
+var resulttt = [];
+var temp;
+for (var i = 0; i < arrSec.length; i++){
+    for(var j = i+1; j < arrSec.length; j++){
+        if(arrSec[i] > arrSec[j]){
+         temp = arrSec[i];
+         arrSec[i] = arrSec[j]
+         arrSec[j] = temp;
+        }
+    }
 
+}
 
+console.log(arrSec);
+for (var i of arrSec){
+ if(resulttt.indexOf(i) == -1){
+   resulttt.push(i);
+ }
+}
+
+console.log(resulttt);
+//console.log(newArrSec);
+console.log('second minimum element in array : '+resulttt[1]);
+console.log('second minimum element in array : '+resulttt.splice(resulttt.length-2,1));
+
+console.log('***********************************');
+
+//54.Find second largest number in Array
+
+function findSecondLargeNumber(arr){
+
+	var fLargeNum = arr[0];
+	var sLargeNum = arr[0];
+
+	for(var i=0; i<arr.length; i++){
+		if(arr[i] > fLargeNum){
+			sLargeNum = fLargeNum;
+			fLargeNum = arr[i];
+			//console.log(fLargeNum)
+			//console.log(sLargeNum)
+		}else if(sLargeNum < arr[i]){
+			sLargeNum = arr[i];
+		}
+	}
+	console.log(`Second largest number in ${arr}`)
+	return sLargeNum;
+}
+
+console.log(findSecondLargeNumber([1,5,3,1,7,100,24,65]));
+console.log('***********************************');

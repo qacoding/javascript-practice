@@ -3,22 +3,31 @@
  1. Filter strings into separate arrays
  2. Test if all characters are UNIQUE in a given string
  3. LONGEST word in a string
- 4. Check if each numbers in an array is greater than 18
- 5. Check whether all elements in the grades array are the EVEN numbers.
+    Longest using reduce() method
+ 4. Check if each numbers in an array is greater than 18 using for loop, break
+    Using filter() method
+ 5. Check whether all elements in the grades array are the EVEN numbers(true/false)
+    - using every() method
+    - Find if numbers are even or odd till the input number (for(var i=0; i<num; i++)
  6. Grab all even, odd numbers out of given array
- 7. Reverse a given String
-    Reverse Array In Place
+ 7. Reverse a given String Using reverse() method
+   - reverse string using for loop
+   - Reverse Array In Place
+   - Reverse Array using stack
  8. Switch the string Ex: First name , Last name
- 9. Find largest number in an array
-    Max using Reduce Method
+   -using push() and for loop with i=1 i>=0, i--
+   -Using 'unshift' method, switch the strings
+ 9. Find largest number in an array using for loop
+    - Max using Reduce Method
  10.Calculate sum of range numbers in an array
     - Using regular for loop, reduce method, Max, Min methods
  11.Find white spaces in the character array
-    Remove white spaces in the character array
+    - Remove white spaces in the character array
  12.Find a character in the string
  13.Find out if number is prime or not
  14.Find absolute value of a number
  15.Remove Duplicate ones from array
+    - remove duplicates using Set
  16.Palindrome
     - Using str.split('').reverse().join('');
     - Using str.split(''); then reverse array using for loop; now reversedArray.join(); compare reverseArray with str
@@ -29,7 +38,9 @@
  18.Parse the data with JSON.parse(), and the data becomes a JavaScript object.(A common use of JSON is to exchange data to/from a web server; When receiving data from a web server, the data is always a string.
  19.Fastest way to find duplicates between two arrays javascript
  20.To remove duplicates from two numbers arrays
+    Remove duplicates from two array using forEach
     To remove duplicates from single number Array
+    To remove duplicates/get unquie from single array Anup's way
     To remove duplicates from two array using Sets
     To get the common/repeated/duplicate elements from two arrays
     To get the common/repeated/duplicate elements from two Arrays using Sets
@@ -44,7 +55,7 @@
  29. Reverse all letters of each word in string but not the whole string as such.
  30. Given a string say "I am a human being" the output should reverse all letters of each word but not the whole string as such.
  31. Arrange Array in Ascending and Descending order using sort() method
- 32. Ascending, Descending  order without using sort() method
+ 32. Ascending, Descending  order without using sort() method(numbers)
  33. What is the most common character in a string(using object)
      Does String A has the same characters as String B(is it an Anagram?)
      Does the string has any repeated character in it?
@@ -64,17 +75,19 @@
  45. Repeat a String with for loop
  46. FizBuzz (1-100 numbers with multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”.
  47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
+     Fibonacci sequence using simple for loop
+     Fibonacci series using array.push
  48. ***IMP****Merge Sort to sort the numbers in an Array
  50. Number of vowels in a string using string.includes method
      Find vowel count using Regex
      Using  str.match(regex) method
- 51. Non-Repeating character in a string
+ 51. Non-Repeating character/integer in a string/array
  52. Given an array say [0,1,2,3,5,6,7,11,12,14,20]
     //  given a number say 5.
     //  Now find the sum of elements which sum to 5
  53. Find second minimum number from Array(My way)
  54.Find second largest number in Array
-
+ 55.Replacing character/space in a string with something else
 
 
 
@@ -84,6 +97,7 @@
 
 
 //*****************************************************************************
+
 
 //1. sort strings into to two separate arrays
 console.log('--------------------------');
@@ -102,7 +116,7 @@ function sort (fruits) {
     console.log('All Apples from array  : ' + appleBox);
     console.log('Everything else in Other box: ' + otherBox);
 }
-console.log(sort(['apple','banana', 'grape','apple']))
+console.log(sort(['apple','banana', 'grape','apple'])) //"All Apples from array  : apple,apple"; "Everything else in Other box: banana,grape"
 // you can use this too: sort(fruits);
 
 let newFruits = ['mango','kiwi','pineapple','orange','apple'];
@@ -135,13 +149,12 @@ function unique(str) {
     }
     return 'string is UNIQUE!'
 }
-console.log('Is \"shar\" unique ? :'+unique('shar'));
+console.log('Is \"shar\" unique ? :'+unique('shar')); //string is UNIQUE!
 console.log('--------------------------');
 
 //*******************************
+
 // 3. LONGEST word in a string
-
-
 let text = 'this is english dictionary'
 function long (str){
     var newstr = str.split(' ');
@@ -156,9 +169,10 @@ function long (str){
     return longest;
 }
 
-console.log('Longest word in text "this is english dictionary :" ' +long(text) );
+console.log('Longest word in text "this is english dictionary :" ' +long(text) ); //Longest word in text 'this is english dictionary : dictionary
 
-// LONGEST word using reduce method
+//LONGEST word using reduce method
+//reduce()	Reduce the values of an array to a single value (going left-to-right)
 
  let texting2 = 'this is our world!'
   function longReduce (str){
@@ -172,11 +186,11 @@ console.log('Longest word in text "this is english dictionary :" ' +long(text) )
 
      })
 
-      console.log('Longest word length is :'+result.length);
+      console.log('Longest word length is :'+result.length);    // Longest word length is :4
       return result;
   }
 
-  console.log('Longest word in text "this is our world! :" ' +longReduce(texting2) );
+  console.log('Longest word in text "this is our world! :" ' +longReduce(texting2) ); //Longest word in text "this is our world! : world
 
 console.log('--------------------------');
 
@@ -194,21 +208,23 @@ for (var i = 0; i < numbers.length; i++) {
 console.log('Are numbers in [91,21,35] greater than 18? : ' +result); // true
 
 //using filter method
+//filter()	Creates a new array with every element in an array that pass a test
 var num1 = [10,20,30,40,50];
 var checkNum = function(num){
     return (num >= 40);
 }
 
 var checkNumResult = num1.filter(checkNum);
-console.log('using filter method:' +checkNumResult);
+console.log('using filter method:' +checkNumResult); //using filter method:40,50"
 
 // using every method(es6)
+//every()	Checks if every element in an array pass a test
 var ages = [19,2,45]
 function check(age){
     return age > 18;
 }
 
-console.log('Are numbers in [91,21,35] greater than 18? : ' +ages.every(check));
+console.log('Are numbers in [91,21,35] greater than 18? : ' +ages.every(check)); //Are numbers in [19,2,45] greater than 18? : false"
 console.log('--------------------------');
 
 //********************************
@@ -220,7 +236,7 @@ var isEven = grades.every(function (e){
     return e % 2 == 0;
 })
 
-console.log('Are numbers EVEN in [2,34,10,78]: '+isEven);
+console.log('Are numbers EVEN in [2,34,10,78]: '+isEven);  //true
 
 // using regular function check all num in an array are even
 function eventNum(grade){
@@ -235,7 +251,7 @@ function eventNum(grade){
     return evenNumber;
 }
 
-console.log(eventNum(grades));
+console.log(eventNum(grades)); //true
 console.log('--------------------------');
 
 // Find if numbers are even or odd till the input number
@@ -265,7 +281,7 @@ for (var char of a){
     }
 }
 console.log('Sort Even, Odd numbers in two separate arrays: ');
-console.log(b,c);
+console.log(b,c); // [0, 2, 4, 6, 8, 10] [1, 3, 5, 7, 9]
 
 
 // using function
@@ -336,6 +352,23 @@ function reverseArrayInPlace(arr) {
 }
 
 console.log('Reverse array in place: '+reverseArrayInPlace([10, 22, 03, 44, 75, 96, 27, 8]));
+
+// Reverse string  using stack
+//1) Create an empty stack. 2) One by one push all characters of string to stack. 3) One by one pop all characters from stack and put them back to string.
+function reverse(str) {
+    var stack = [];
+    // push letter into stack
+    for (var i = 0; i < str.length; i++) {
+        stack.push(str[i]);
+    }
+    // pop letter from the stack
+    var reverseStr = '';
+    while (stack.length > 0) {
+        reverseStr += stack.pop();
+    }
+    return reverseStr;
+}
+console.log(reverse('JavaScript Stack'));
 
 console.log('***********************************');
 
@@ -411,7 +444,7 @@ function sumRange(num){
 return 'Sum of array num [0,2,3] using for loop is  : ' +sum;
 }
 
-console.log(sumRange([0,2,3]));
+console.log(sumRange([0,2,3])); //Sum of array num [0,2,3] using for loop is  : 5
 
 // Sum using reduce method
 
@@ -469,7 +502,7 @@ console.log('-----------------------------');
 
 console.log('***********************************');
 
-//12.Find a character in the string
+//12.Find a character in the string(check if given character/word present in a given string)
 //This algorithm will find a character in the string.If string is "Programming" algorithm will find r
 
 function charFind(wording){
@@ -532,6 +565,26 @@ for(let i=0; i < ab.length; i++){
 }
 console.log(bb.sort());
 
+// remove duplicates using Set
+let basket = ["Banana", "Orange", "Apple", "Mango", "Mango", "Apple"];
+function fruitSort(fruit){
+  var set = new Set();
+  var result = [];
+  for(var i of fruit){
+    if(!set.has(i)){
+      set.add(i);
+      result.push(i);
+    }
+  }
+  console.log(`removing duplicates from ${basket} using Sets:`)
+  return result.sort();
+
+}
+
+
+console.log(fruitSort(basket));
+
+
 console.log('***********************************');
 
 
@@ -548,7 +601,7 @@ function palindrome(str){
     return false;
 }
 
-console.log('is gadag a palindrome?'+palindrome('gadag'));
+    console.log('is gadag a palindrome?'+palindrome('gadag'));
 
 // Testing Palindrome without using 'reverse()' function
 function palindromeString(str){
@@ -627,6 +680,22 @@ function palin(str){
             return false;
     }
 console.log(palin("Madam I'm Adam"));
+
+function aisPalindrome(str){
+  str = str.toLowerCase();
+  var str1 = str.replace(/[^a-z]/gi, '');
+  var newStr = str1.split('');
+   var result =[];
+ while(newStr.length > 0){
+   result = result+newStr.pop()
+ }
+  console.log('input string:'+str1);
+  console.log('reversed string:'+result);
+  return result == str1;
+
+}
+console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ aisPalindrome("Madam I'm Adam"));
+
 console.log('***********************************');
 
 // 17. JSON.stringify() method converts a JavaScript Object value to a JSON string
@@ -641,7 +710,7 @@ var objectLiteral = {
 console.log('Object before stringify: ' );
 console.log(objectLiteral);
 console.log('After JSON.stringify()');
-console.log(JSON.stringify(objectLiteral));
+console.log(JSON.stringify(objectLiteral)); //"{'firstname':'Mary','isAProgrammer':true}"
 console.log('***********************************');
 
 
@@ -670,34 +739,49 @@ function compareArray(arr1, arr2){
   return(resultArray);
 }
 
-console.log(compareArray([1,2,3], [1,2,6]));
+console.log(compareArray([1,2,3], [1,2,6])); // [1,2]
 console.log('***********************************');
 
-// 20. To remove duplicates from two arrays
+// 20. To remove duplicates from two arrays(get the unique values) and make one array with unique elements.
 
 var a = [1,2,3,3];
 var b = [7,7,4,5,12];
+function removeDup(arr1,arr2){
 var c = [];
-
 for (var i of a){
     if(c.indexOf(i) === -1){
         c.push(i);
     }
 }
-/*for(let i=0; i < ab.length; i++){
-//console.log(ab[i]);
-if(bb.indexOf(ab[i]) === -1){
-bb.push(ab[i]);
-}
-}*/
-
 for (var j of b){
     if(c.indexOf(j) === -1){
         c.push(j);
         }
+  }
+  return c
 }
 console.log(a,b);
-console.log('Removed duplicates from two arrays: '+c);
+console.log('Removed duplicates from two arrays: '+removeDup(a,b)); //Removed duplicates from two arrays: 1,2,3,7,4,5,12
+
+
+// Remove duplicates from two array using forEach
+var arr1 = [2,1,3,4,4,5,6];
+var arr2 = [1,2,3,8,9,6];
+var finalArr = [];
+
+function dupArray(arr1,arr2){
+    arr1.forEach(function(e1){
+    arr2.forEach(function(e2){
+    if(e1==e2){
+        finalArr.push(e1)
+      //  console.log(finalArr)
+    }
+    })
+    })
+
+    return finalArr
+}
+console.log(dupArray(arr1,arr2))  //[2, 1, 3, 6]
 
 
  // To remove duplicates from single Array
@@ -721,6 +805,22 @@ console.log('--------------------');
 
 console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`);
 
+//To remove duplicates/get unique from single array Anup's way
+function uniqueSingArray(arr){
+    var num = new Set();
+    var result = [];
+    for( var i of arr){
+    if(!num.has(i)){
+        num.add(i);
+        result.push(i);
+    }
+  }
+   console.log(`duplicates removed from array ${arr}:`);
+   return result
+}
+
+console.log(uniqueSingArray([2,1,1,3,3,4,1,5,6,7,7]))
+
 //To remove duplicates from two array using Sets
 function uniqueArray(arr1, arr2) {
     var unionSet = new Set(arr1);
@@ -734,19 +834,21 @@ console.log(uniqueArray([1,2,3,3,310],[1,2,3,4,5]));
 
  // To get the common/repeated/duplicate elements from two arrays
 function commonElements(a,b){
-console.log(a,b)
-  var c = [];
- for (var i of b){
-
- //console.log(i);
- //console.log(a.indexOf(i))
-   if(a.indexOf(i) >= 1 ){
-    c.push(i)
-   }
- }
- return c
+var set = new Set();
+  var dup = [];
+  for(var i of a){
+    if(!set.has(i)){
+      set.add(i);
+    }
+  }
+  for(var i of b){
+    if(set.has(i)){
+     dup.push(i);
+    }
+  }
+  return dup;
 }
-console.log(commonElements([1,2,3,4],[2,3,4,5,6,1]))
+console.log(commonElements([2,1,5],[2,3,4,6,1])) //[2,1]
 
 //To get the common/repeated/duplicate elements from two Arrays using Sets
 function dupValue(arr1,arr2){
@@ -887,7 +989,7 @@ function countUniqueValues(arr){
     console.log('count unique values in an array: '+arr);
     return i + 1;
 }
-console.log(countUniqueValues([1,1,1,1,2]));
+console.log(countUniqueValues([1,1,1,1,2])); //2
 
 
 // Another way to solve above problem
@@ -905,7 +1007,7 @@ console.log('count unique values in an array using pushing unique values to empt
 return(bbc.sort().length);
 }
 
-console.log(countUniqueValues1([1,1,1,1,2,3,4,5,6,6,8]));
+console.log(countUniqueValues1([1,1,1,1,2,3,4,5,6,6,8])); //[ 2, 1, 3, 4, 5, 6, 7 ]
 
 console.log('***********************************');
 
@@ -1006,8 +1108,8 @@ console.log('***********************************');
 
 //32.Ascending, Descending  order NOT using sort() method
 console.log('Ascending,Descending order not using sort()');
-function sorter(array)
-{
+console.log('Ascending order');
+function sorter(array){
    // var count = array.length - 1;
  var swap;
  for (var i = 0; i < array.length; i++)
@@ -1186,7 +1288,7 @@ function repeat(str){
          console.log(char+ ': No consecutive repeated characters');
      })
  }
-  console.log(repeatChar(['google','yahoo', 'amazon']));
+  console.log(repeatChar(['google','yahoo', 'amazon'])); // amazon
   console.log('***************************');
 
 //37. Reverse numbers in an array
@@ -1307,10 +1409,10 @@ console.log('count of 5 in '+numbersArray +' is: '+count);
 
 //Using reduce method
 function countOccrReduce(arr,num){
-    var result = arr.reduce(function(total,current){
+    var result = arr.reduce(function(count,current){
         if(current == num)
-        total ++
-        return total;
+        count ++
+        return count;
     },0)
     console.log(`Count of '5' in ${arr} using reduce method: ${result}`);
     return result;
@@ -1421,7 +1523,7 @@ let repeatStr = '';
 console.log('Repeat string: '+repeatWord('car', 4));
 console.log('***********************************');
 
-//46. Write a program that prints all the numbers from 1 to 100.
+//46. Write a program that prints all the numbers from 1 to 20.
 //For multiples of 3, instead of the number, print "Fizz",
 //for multiples of 5 print "Buzz".
 //For numbers which are multiples of both 3 and 5, print "FizzBuzz".
@@ -1445,7 +1547,21 @@ console.log('***********************************');
 
 //47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
 //characterized by the fact that every number after the first two is the sum of the two preceding ones
+//Fibonacci sequence using simple for loop
 
+function fibSeq(n) {
+	var a=0, b=1;
+	for (var i=0; i < n; i++) {
+		var temp = a+b;
+		a = b;
+		b = temp;
+		console.log(a)
+	}
+	return a;
+}
+console.log(fibSeq(8))  //1 1 2 3 5 8 13 21
+
+//Fibonacci series using array.push
 function fib(n){
   let arr = [0, 1];
   for (let i = 2; i < n + 1; i++){
@@ -1566,7 +1682,7 @@ console.log(regexMatch('oiuoiuoiu'));
 
 console.log('***********************************');
 
-//51.Non-Repeating character in a string
+//51.Non-Repeating first character/integer in a string/array
 
 function nonRepeat(str){
     for(var i = 0; i < str.length; i++){
@@ -1589,7 +1705,8 @@ function nonRepeat(str){
     }
 }*/
 
-console.log(nonRepeat('@lovelo'));
+console.log(nonRepeat('@lovelo')); //@
+console.log(nonRepeat([2,2,4,5,5,6,7]));
 
 console.log('***********************************');
 
@@ -1674,7 +1791,7 @@ function findSecondLargeNumber(arr){
 			fLargeNum = arr[i];
 			//console.log(fLargeNum)
 			//console.log(sLargeNum)
-		}else if(sLargeNum < arr[i]){
+		}else if( arr[i] > sLargeNum){
 			sLargeNum = arr[i];
 		}
 	}
@@ -1683,4 +1800,12 @@ function findSecondLargeNumber(arr){
 }
 
 console.log(findSecondLargeNumber([1,5,3,1,7,100,24,65]));
+console.log('***********************************');
+
+//55.Replacing character/space in a string with something else
+var str = 'welcome to the world';
+console.log(str.split(' ').join('*'));
+console.log(str.replace(/ /g,'*'));
+console.log(str.replace(/welcome/g,'come'));
+
 console.log('***********************************');

@@ -49,8 +49,11 @@
  23. Map method example(multiply numbers in an array)
  24. Determine if two strings are permutation of each other. Ex; 'baseball', 'ballbase'
  25. Add up to given number
- 26. Count of each character in a string
- 27. Count unique values in Number array
+ 26. Count of each character in a string using Object
+    -Count of each character/letter in a string using Map object
+ 27. Count unique values in Number array using for loop
+    - Using Array.push()
+    - Unique count using Set
  28. Find the max consecutive repetitive character
  29. Reverse all letters of each word in string but not the whole string as such.
  30. Given a string say "I am a human being" the output should reverse all letters of each word but not the whole string as such.
@@ -88,6 +91,7 @@
  53. Find second minimum number from Array(My way)
  54.Find second largest number in Array
  55.Replacing character/space in a string with something else
+    -replacing char using for loop.
 
 
 
@@ -489,7 +493,7 @@ function whiteSpace(strChar){
 }
 
 console.log('white spaces are: ' + whiteSpace(['a',' ','b', ' ']));
-console.log('***********************************');
+console.log('-----------------------------');
 
 //Remove white spaces in the character array
 function removeSpace(str){
@@ -497,8 +501,9 @@ function removeSpace(str){
  return (str.split(' ').join(''));
 }
 
-console.log('After removing the spaces: '+removeSpace('kannada naadu nammadu'));
-console.log('-----------------------------');
+console.log('After removing the spaces: '+removeSpace('kannada naadu nammadu')); //kannadanaadunammadu
+
+//Count
 
 console.log('***********************************');
 
@@ -565,7 +570,7 @@ for(let i=0; i < ab.length; i++){
 }
 console.log(bb.sort());
 
-// remove duplicates using Set
+// remove duplicates using Set Anup way
 let basket = ["Banana", "Orange", "Apple", "Mango", "Mango", "Apple"];
 function fruitSort(fruit){
   var set = new Set();
@@ -950,7 +955,7 @@ console.log(addUpTo1(6))
 
 console.log('***********************************');
 
-//26. Count of each character in a string
+//26. Count of each character/letter in a string
 
 function charCount(str){
     var result = {};
@@ -974,6 +979,29 @@ function charCount(str){
 console.log('character count in a given string: ');
 console.log(charCount('Your PIN numberr is 1234'));
 
+// Count of each character/letter in a string using Map object
+function charCount(str){
+  var count = 0;
+  //creating map
+  var map = new Map();
+  //loop through str and check if character is in map if yes,count++ else count=1
+  //set map with character as key and count as value(map.set(i,count))
+  for( var i of str){
+    if(map.has(i)){
+      count++
+      map.set(i,count);
+    }else{
+      count = 1;
+      map.set(i,count);
+    }
+  }
+  //Printing key, values from map
+  for(var [key,value] of map.entries()){
+    console.log(key,value);
+  }
+}
+console.log(charCount('welcome'));
+
 console.log('***********************************');
 
 // 27.Count unique values in Number array
@@ -992,22 +1020,34 @@ function countUniqueValues(arr){
 console.log(countUniqueValues([1,1,1,1,2])); //2
 
 
-// Another way to solve above problem
+// Another way to solve above problem using Array push
 // declare empty array; check if number is present in that empty array(bbc.indexOf(abc[i])= -1 if not present; if not push it to array bbc
-function countUniqueValues1(abc){
-let bbc = [];
-for(let i=0; i < abc.length; i++){
+function countUniqueValues1(arr){
+let result = [];
+for(let i=0; i < arr.length; i++){
     //console.log(ab[i]);
     // indexOf returns -1 if no match found
-    if(bbc.indexOf(abc[i]) === -1){
-        bbc.push(abc[i]);
+    if(result.indexOf(arr[i]) === -1){
+        result.push(arr[i]);
     }
 }
-console.log('count unique values in an array using pushing unique values to empty array: '+abc);
-return(bbc.sort().length);
+console.log('count unique values in an array using pushing unique values to empty array: '+arr);//[ 2, 1, 3, 4, 5, 6, 7 ]
+return(result.sort().length);
 }
 
-console.log(countUniqueValues1([1,1,1,1,2,3,4,5,6,6,8])); //[ 2, 1, 3, 4, 5, 6, 7 ]
+console.log(countUniqueValues1([1,1,1,1,2,3,4,5,6,6,8])); //7
+
+// unique count using Set
+function uniqueCountSet(arr){
+var set = new Set();
+for( var i of arr){
+    set.add(i);
+}
+console.log(`Count unique values in ${arr} is:`);
+return set.size
+}
+
+console.log(uniqueCountSet([1,1,1,1,2,3,4,6,6,8])) //6
 
 console.log('***********************************');
 
@@ -1244,6 +1284,11 @@ var getMax = function (str) {
 };
 
 console.log(getMax('hello world'));
+
+// Get count of given character in a string
+var strr = 'ahahjjakkallaa';
+var re =strr.split('a').length-1;
+console.log(strr+' :'+re);
 
 console.log('***********************************');
 
@@ -1628,7 +1673,7 @@ function firstCharCapital(word){
     let result = []
     for( let char of newWord){
         // char[0] gets the first letter in a word (a c o a) and char.slice(1) gets the remaining of the word except first letter Ex: apital f merica
-        var upperCase = char[0].toUpperCase().concat( char.slice(1));
+        var upperCase = char[0].toUpperCase().concat(char.slice(1));
         result.push(upperCase);
     }
     console.log(`Capitalize first letter in a word of a given sentence: ${word}`);
@@ -1712,7 +1757,7 @@ console.log('***********************************');
 
 //52.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
 //  given a number say 5.
-//  Now find the sum of elements which sum to 5
+//  Now find the sum of elements which sum/add to 5
 //  eg:2+3=5, 0+5=5 etc.
 function sumArr(arr){
     var sum = 5;
@@ -1808,4 +1853,18 @@ console.log(str.split(' ').join('*'));
 console.log(str.replace(/ /g,'*'));
 console.log(str.replace(/welcome/g,'come'));
 
+// replacing char using for loop.
+function addStar(str){
+var newStr = '';
+for( var i=0; i < str.length; i++){
+  if(str[i] == ' '){
+   newStr = newStr+'*';
+  }else
+  newStr = newStr+str[i];
+ }
+ return newStr;
+
+}
+console.log(addStar('welcome to the world'));
 console.log('***********************************');
+

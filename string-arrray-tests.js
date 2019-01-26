@@ -2,6 +2,7 @@
 /*
  1. Filter strings into separate arrays
  2. Test if all characters are UNIQUE in a given string
+   - Get unique values(remove duplicate) from string using filter method
  3. LONGEST word in a string
     Longest using reduce() method
  4. Check if each numbers in an array is greater than 18 using for loop, break
@@ -37,13 +38,14 @@
  17.JSON.stringify() method converts a JavaScript value to a JSON string
  18.Parse the data with JSON.parse(), and the data becomes a JavaScript object.(A common use of JSON is to exchange data to/from a web server; When receiving data from a web server, the data is always a string.
  19.Fastest way to find duplicates between two arrays javascript
- 20.To remove duplicates from two numbers arrays
-    Remove duplicates from two array using forEach
-    To remove duplicates from single number Array
-    To remove duplicates/get unquie from single array Anup's way
-    To remove duplicates from two array using Sets
-    To get the common/repeated/duplicate elements from two arrays
-    To get the common/repeated/duplicate elements from two Arrays using Sets
+ 20.To remove duplicates from two numbers arrays(get the unique values)
+    - Remove duplicates from two array using forEach
+    - To remove duplicates from single number Array(get unique values from single array)
+    - Get Unique values(remove duplicates) from single array using array filter method
+    - To remove duplicates/get unquie from single array Anup's way
+    - To remove duplicates from two array using Sets
+    - To get the common/repeated/duplicate elements from two arrays
+    - To get the common/repeated/duplicate elements from two Arrays using Sets
  21.Filter method to check if num is greater than another num
  22.Filter method to retrieve data from array object
  23. Map method example(multiply numbers in an array)
@@ -155,6 +157,16 @@ function unique(str) {
 }
 console.log('Is \"shar\" unique ? :'+unique('shar')); //string is UNIQUE!
 console.log('--------------------------');
+
+//Get unique values(remove duplicate) from string using filter method
+function uniqueValues(str){
+var arr = str.split('');
+var result = arr.filter(function(char){
+  return arr.indexOf(char) == arr.lastIndexOf(char);
+})
+console.log(result.join(''));
+}
+console.log(uniqueValues('vvvijkklsds')) //"ijld"
 
 //*******************************
 
@@ -318,18 +330,18 @@ function reverseString1(str){
 console.log('Reverse string \'English dictionary\': ' +reverseString1('English dictionary'));
 
 // reverse string using for loop
+//If string is not in array then NO need to split it and join in. Just use str= str+str[i]
 
 function reverseString2(str){
-
-    var str = str.split('');
-    var resultStr = [];
-    for( var i = str.length; i >= 0; i--){
-        resultStr.push(str[i]);
+    var resultStr = '';
+    for( var i = str.length-1; i >= 0; i--){ //To start at the end of the array we want to set i equal to the length of the array minus 1, since the index of an array always starts at zero.
+        resultStr+= str[i];
     }
- return (resultStr.join(''));
+ return (resultStr);
 }
 
 console.log('Reverse string \'California\' using for loop : ' +reverseString2('California'));
+
 
 
 // Reverse an array using for loop
@@ -610,21 +622,18 @@ function palindrome(str){
 
 // Testing Palindrome without using 'reverse()' function
 function palindromeString(str){
-    var newStr = str.split('');
-    var resultStr = [];
-    for( var i = newStr.length; i >= 0; i--){
-        resultStr.push(newStr[i]);
+    var resultStr = '';
+    for( var i = str.length-1; i >= 0; i--){
+        resultStr = resultStr+str[i]
     }
-   // console.log(resultStr.join(''));
-   // console.log(str);
-    if (resultStr.join('') == str){
+ // console.log(resultStr);
+    if (resultStr == str){
      return true;
     }else
  return false;
 }
 
-console.log(palindromeString('gadag'));
-
+console.log(palindromeString('gadag')); //true
 
 
 // Testing Palindrome using push() and pop() methods.
@@ -789,7 +798,7 @@ function dupArray(arr1,arr2){
 console.log(dupArray(arr1,arr2))  //[2, 1, 3, 6]
 
 
- // To remove duplicates from single Array
+//To remove duplicates from single Array(get unique values from single array)
 
 console.log('--------------------');
  var single = [33,45,45,22,22,1,99,5,5]
@@ -810,6 +819,16 @@ console.log('--------------------');
 
 console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`);
 
+//Get Unique values(remove duplicates) from single array using array filter method
+function uniqueValuesArray(arr){
+  var result = arr.filter(function(char){
+  return arr.indexOf(char) == arr.lastIndexOf(char);
+})
+console.log(result);
+}
+console.log(uniqueValuesArray([1,2,31,4,56,23,78,2])) //[1, 31, 4, 56, 23, 78]
+
+
 //To remove duplicates/get unique from single array Anup's way
 function uniqueSingArray(arr){
     var num = new Set();
@@ -824,7 +843,7 @@ function uniqueSingArray(arr){
    return result
 }
 
-console.log(uniqueSingArray([2,1,1,3,3,4,1,5,6,7,7]))
+console.log(uniqueSingArray([2,1,1,3,3,4,1,5,6,7,7]))  //[2, 1, 3, 4, 5, 6, 7]
 
 //To remove duplicates from two array using Sets
 function uniqueArray(arr1, arr2) {
@@ -980,27 +999,28 @@ console.log('character count in a given string: ');
 console.log(charCount('Your PIN numberr is 1234'));
 
 // Count of each character/letter in a string using Map object
+//NOTE: to check word count in a sentence/string(welcome to world welcome)  split the str(arr = str.split(' '); then loop thru(var i of arr) //welcome 2, to 1 world 1
 function charCount(str){
-  var count = 0;
-  //creating map
-  var map = new Map();
-  //loop through str and check if character is in map if yes,count++ else count=1
-  //set map with character as key and count as value(map.set(i,count))
-  for( var i of str){
-    if(map.has(i)){
-      count++
-      map.set(i,count);
-    }else{
-      count = 1;
-      map.set(i,count);
+    var count = 0;
+    //creating map
+    var map = new Map();
+    //loop through str and check if character is in map if yes,count++ else count=1
+    //set map with character as key and count as value(map.set(i,count))
+    for( var i of str){
+        if(map.has(i)){
+            count++
+            map.set(i,count);
+        }else{
+            count = 1;
+            map.set(i,count);
+        }
     }
-  }
-  //Printing key, values from map
-  for(var [key,value] of map.entries()){
-    console.log(key,value);
-  }
+    //Printing key, values from map
+    for(var [key,value] of map.entries()){
+        console.log(key,value);
+    }
 }
-console.log(charCount('welcome'));
+console.log(charCount('welcome')); //e 2, w 1,c 1, m 1
 
 console.log('***********************************');
 
@@ -1730,7 +1750,7 @@ console.log('***********************************');
 //51.Non-Repeating first character/integer in a string/array
 
 function nonRepeat(str){
-    for(var i = 0; i < str.length; i++){
+    for(var i = 0; i < str.length; i++){  //you can use for..of loop too
       //  console.log(str[i]);
         if(str.indexOf(str[i]) == str.lastIndexOf(str[i])){
         console.log(`Non-Repeating character in a string ${str}: ${str[i]}`);
@@ -1739,16 +1759,6 @@ function nonRepeat(str){
     }
 }
 
-// using for..of loop
-/*function nonRepeat(str){
-    for(let char of str){
-      //  console.log(str[i]);
-        if(char.indexOf(char) == char.lastIndexOf(char)){
-        console.log(`Non-Repeating character in a string ${str}: ${char}`);
-        break;
-        }
-    }
-}*/
 
 console.log(nonRepeat('@lovelo')); //@
 console.log(nonRepeat([2,2,4,5,5,6,7]));

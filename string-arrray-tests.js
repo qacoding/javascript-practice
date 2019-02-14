@@ -1,34 +1,41 @@
 //*****************************************************************************
 /*
  1. Filter strings into separate arrays
+   - Using filter method
  2. Test if all characters are UNIQUE in a given string
    - Get unique values(remove duplicate) from string using filter method
+   - Get unique values from string and storing in empty string
  3. LONGEST word in a string
-    Longest using reduce() method
+   - Longest using reduce() method
  4. Check if each numbers in an array is greater than 18 using for loop, break
-    Using filter() method
+   - Using filter() method
+   - Using every method(es6)
  5. Check whether all elements in the grades array are the EVEN numbers(true/false)
-    - using every() method
+    - Using every() method
     - Find if numbers are even or odd till the input number (for(var i=0; i<num; i++)
  6. Grab all even, odd numbers out of given array
  7. Reverse a given String Using reverse() method
-   - reverse string using for loop
+   - Reverse string using for loop
+   - Reverse an array using for loop
    - Reverse Array In Place
    - Reverse Array using stack
  8. Switch the string Ex: First name , Last name
-   -using push() and for loop with i=1 i>=0, i--
-   -Using 'unshift' method, switch the strings
- 9. Find largest number in an array using for loop
+   - Using push() and for loop with i=1 i>=0, i--
+   - Using 'unshift' method, switch the strings
+ 9. Find largest number in an array using Math.max
+    - Using for loop
     - Max using Reduce Method
+    - Find largest number from Array of sub-Arrays Ex: [[2,5,1,7],[23,45,78],[12,600,256,1]]; //[7, 78, 600]
+    - Find Largest number from Array of sub-arrays using forEach
  10.Calculate sum of range numbers in an array
     - Using regular for loop, reduce method, Max, Min methods
- 11.Find white spaces in the character array
+ 11.Count white spaces in the character array
     - Remove white spaces in the character array
- 12.Find a character in the string
- 13.Find out if number is prime or not
+ 12.check if given character/word present in a given string
+ 13.Find out if given number is prime or not
  14.Find absolute value of a number
- 15.Remove Duplicate ones from array
-    - remove duplicates using Set
+ 15.Remove Duplicate ones from an array using indexOf()
+    - Remove duplicates using Set Anup way
  16.Palindrome
     - Using str.split('').reverse().join('');
     - Using str.split(''); then reverse array using for loop; now reversedArray.join(); compare reverseArray with str
@@ -49,31 +56,38 @@
  21.Filter method to check if num is greater than another num
  22.Filter method to retrieve data from array object
  23. Map method example(multiply numbers in an array)
+    - map on string array
  24. Determine if two strings are permutation of each other. Ex; 'baseball', 'ballbase'
  25. Add up to given number
  26. Count of each character in a string using Object
-    -Count of each character/letter in a string using Map object
+    - Count of each character/letter in a string using Map object
  27. Count unique values in Number array using for loop
     - Using Array.push()
     - Unique count using Set
  28. Find the max consecutive repetitive character
- 29. Reverse all letters of each word in string but not the whole string as such.
+ 29. Pairs whose sum is n
  30. Given a string say "I am a human being" the output should reverse all letters of each word but not the whole string as such.
  31. Arrange Array in Ascending and Descending order using sort() method
- 32. Ascending, Descending  order without using sort() method(numbers)
+ 32. Ascending, Descending  order not using sort() method(numbers)
+     - Sort string alphabetically
  33. What is the most common character in a string(using object)
-     Does String A has the same characters as String B(is it an Anagram?)
-     Does the string has any repeated character in it?
+    - above question using split method and storing in array instead of Object
+    - Does String A has the same characters as String B(is it an Anagram?)
+    - Does the string has any repeated character in it?
      NOTE: All the above has same technique to resolve
  34. Max character repeated in a string using split(char) method
+    - Get count of given character in a string
  35. Find if characters in words in an array are unique
  36. Display the string which doesn't have consecutive repeated characters.
  37. Reverse numbers in an array
+    - Reverse loop through starting from last num(d.length)
  38. Sort the words that are anagrams in an array
+    - Just to check if two words are Anagram
  39. Print stars in a row (* ** *** **** *****)
  40. Find the Prime numbers till the number
  41. Count occurrence of number in an Array
-     Count occurrence of number using Reduce method
+    - Count occurrence of number using Reduce method
+    - Count occurrence of number using Reduce method
  42. Moving an element in an array to a given position
  43. Exclude given numbers from Array
  44. Remove elements from head of an Array
@@ -82,18 +96,26 @@
  47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
      Fibonacci sequence using simple for loop
      Fibonacci series using array.push
+     Fib series using Recursive method
  48. ***IMP****Merge Sort to sort the numbers in an Array
- 50. Number of vowels in a string using string.includes method
+    Steps: First sort the numbers then merge sorted arrays
+ 49. Merging two sorted arrays
+ 50. Capitalize first character in a word in a sentence
+ 51. Number of vowels in a string using string.includes method
      Find vowel count using Regex
      Using  str.match(regex) method
- 51. Non-Repeating character/integer in a string/array
- 52. Given an array say [0,1,2,3,5,6,7,11,12,14,20]
+ 52. Non-Repeating character/integer in a string/array
+ 53. Given an array say [0,1,2,3,5,6,7,11,12,14,20]
     //  given a number say 5.
     //  Now find the sum of elements which sum to 5
- 53. Find second minimum number from Array(My way)
- 54.Find second largest number in Array
- 55.Replacing character/space in a string with something else
-    -replacing char using for loop.
+ 54. Find second minimum number from Array(My way)
+ 55.Find second largest number in Array
+ 56.Replacing character/space in a string with something else
+    - Replacing char using for loop.
+ 57. Write a program to move all zeros to the end of the Array using for loop.
+    - Write a program to move all zeros to the end of the Array
+ 58. Segregate zeros and ones in an array
+
 
 
 
@@ -129,7 +151,6 @@ let newFruits = ['mango','kiwi','pineapple','orange','apple'];
 console.log('using sort method: '+newFruits.sort());
 console.log('--------------------------');
 
-//-------------------------
 // Using filter method on array
 var resulting = fruits.filter(num =>{
      return num !== 'apple';
@@ -137,8 +158,8 @@ var resulting = fruits.filter(num =>{
 
 console.log('using filter method: '+resulting);
 
-console.log('--------------------------');
-//********************************
+console.log('*******************************');
+
 /* 2. Test if all characters are UNIQUE in a given string
   Using Indexof, charAt
   The charAt() method returns the character at the specified index in a string.
@@ -168,7 +189,20 @@ console.log(result.join(''));
 }
 console.log(uniqueValues('vvvijkklsds')) //"ijld"
 
-//*******************************
+//Get unique values from string and storing in empty string
+
+function uniqueValuesString(str){
+  var str1 = '';
+  for (var i of str){
+    if(str.indexOf(i) == str.lastIndexOf(i)){
+      str1 = str1+i
+    }
+  }
+return str1;
+}
+console.log(uniqueValuesString('vvvijkklsds')) //"ijld"
+
+console.log('*******************************');
 
 // 3. LONGEST word in a string
 let text = 'this is english dictionary'
@@ -208,9 +242,9 @@ console.log('Longest word in text "this is english dictionary :" ' +long(text) )
 
   console.log('Longest word in text "this is our world! :" ' +longReduce(texting2) ); //Longest word in text "this is our world! : world
 
-console.log('--------------------------');
+console.log('*******************************');
 
-//*******************************************
+
 // 4. Check if each numbers in an array is greater than 18
 //Using for loop
 var numbers = [91, 21, 35];
@@ -241,10 +275,10 @@ function check(age){
 }
 
 console.log('Are numbers in [91,21,35] greater than 18? : ' +ages.every(check)); //Are numbers in [19,2,45] greater than 18? : false"
-console.log('--------------------------');
+console.log('*******************************');
 
-//********************************
-// 5.  Check whether all elements in the grades array are the EVEN numbers.
+
+//5.Check whether all elements in the grades array are the EVEN numbers.
 // using every() method
 var grades = [2,34,10,78];
 
@@ -282,9 +316,9 @@ function evenOddNum(num){
 }
 
 console.log(evenOddNum(10));
-//*********************************************
+console.log('*******************************');
 
-// 6.  Grab all even, odd numbers out of given array
+// 6.Grab all even, odd numbers out of given array
 // regular way
 var a = [ 0,1,2,3,4,5,6,7,8,9,10]
 var b = [];
@@ -317,10 +351,9 @@ function evenOdd(num){
 }
 
 evenOdd(allNum);
-console.log('--------------------------');
+console.log('*******************************');
 
-//*****************************************************
-// 7. Reverse a given String
+//7. Reverse a given String
 // Using reverse() method
 
 function reverseString1(str){
@@ -329,7 +362,7 @@ function reverseString1(str){
 
 console.log('Reverse string \'English dictionary\': ' +reverseString1('English dictionary'));
 
-// reverse string using for loop
+// Reverse string using for loop
 //If string is not in array then NO need to split it and join in. Just use str= str+str[i]
 
 function reverseString2(str){
@@ -388,7 +421,7 @@ console.log(reverse('JavaScript Stack'));
 
 console.log('***********************************');
 
-// 8. Switch the string Ex: First name , Last name
+// 8.Switch the string Ex: First name, Last name
 //using push() and for loop with i=1 i>=0, i--
 function reverseName(str){
     str = str.split(' ');
@@ -400,7 +433,7 @@ function reverseName(str){
 }
 
 console.log('Switch strings \'english dictionary awesome\' : ' +reverseName('english dictionary'));
-console.log('***********************************');
+
 
 // Using 'unshift' method, switch the strings
 function switchName(str){
@@ -412,7 +445,8 @@ function switchName(str){
     return switchNameResult.join(' ');
 }
 
-console.log('Switch strings \'Kannada dictionary awesome\' : ' +switchName('kannada dictionary awesome'));
+console.log('Switch strings \'Kannada dictionary awesome\' : ' +switchName('kannada dictionary awesome')); // awesome dictionary kannada
+
 console.log('***********************************');
 
 
@@ -433,7 +467,7 @@ console.log('largest number in an array [3,19,20,5] using Math.max(): ' +Math.ma
  }
  console.log('largest number in an array [4,2,9] : ' +largeNumber([4,2,9]));
 
- //Using Reduce Method
+// Find largest/Max number in an Array Using Reduce Method
 
 const testArray = [2,67,45,99,123,78];
  function getMaxReduce(arr){
@@ -446,6 +480,48 @@ const testArray = [2,67,45,99,123,78];
 
  }
  console.log(getMaxReduce(testArray));
+
+ // Find largest number from Array of sub-Arrays Ex: [[2,5,1,7],[23,45,78],[12,600,256,1]]; //[7, 78, 600]
+ // First outer for loop to iterate thru arrays (for var i=0 ...)
+ // Second for loop to iterate thru elements in each array(for j=0, j < arr[i].length;j++)
+ // Find largest in each array push it to resultArr
+ // Reset largestNum = 0 for next array looping to get largest num
+ function largestNumSubArrays(arr){
+   var largestNum;
+   var resultArr = [];
+   for(var i = 0; i < arr.length; i++){
+     largestNum = 0;
+     for(var j = 0; j < arr[i].length; j++){
+       if(arr[i][j] > largestNum){
+         largestNum = arr[i][j];
+       }
+     }
+     resultArr.push(largestNum);
+   }
+   return resultArr;
+ }
+
+ console.log(largestNumSubArrays([[2,5,1,7],[23,45,78],[12,600,256,1]])); //[7, 78, 600]
+
+ // Find Largest number from Array of sub-arrays using forEach
+ function largestNumSubArrays(arr){
+   var largestNum;
+   var resultArr = [];
+    arr.forEach(function(subArr){
+      largestNum = 0;
+     for(var i = 0; i < subArr.length; i++){
+       if(subArr[i] > largestNum){
+         largestNum = subArr[i];
+       //  console.log(largestNum)
+       }
+     }
+     return (resultArr.push(largestNum));
+   })
+   return resultArr;
+ }
+
+ console.log(largestNumSubArrays([[2,5,1],[23,45,78],[12,600,256,1,800]])); //[5, 78, 800]
+
 
  console.log('***********************************');
 
@@ -496,7 +572,7 @@ console.log('***********************************');
 function whiteSpace(strChar){
      spaceCount = 0;
      for (var i in strChar){
-         console.log(strChar[i]);
+        // console.log(strChar[i]);
          if (strChar[i] == ' '){
             spaceCount = spaceCount+1;
          }
@@ -504,10 +580,10 @@ function whiteSpace(strChar){
      return spaceCount;
 }
 
-console.log('white spaces are: ' + whiteSpace(['a',' ','b', ' ']));
+console.log('white spaces are: ' + whiteSpace(['a',' ','b', ' '])); //"white spaces are: 2"
 console.log('-----------------------------');
 
-//Remove white spaces in the character array
+// Remove white spaces in the character array
 function removeSpace(str){
  console.log('string with spaces: '+str)
  return (str.split(' ').join(''));
@@ -515,23 +591,21 @@ function removeSpace(str){
 
 console.log('After removing the spaces: '+removeSpace('kannada naadu nammadu')); //kannadanaadunammadu
 
-//Count
-
 console.log('***********************************');
 
 //12.Find a character in the string(check if given character/word present in a given string)
 //This algorithm will find a character in the string.If string is "Programming" algorithm will find r
 
 function charFind(wording){
- console.log('string found is'+wording.search('fun'));
- console.log('string found is' +wording.includes('fun'));
- console.log('string found is'+wording.indexOf('fun') > -1);
+ console.log('string found is'+wording.search('fun'));       //"string found is15"
+ console.log('string found is' +wording.includes('fun'));    //"string found istrue"
+ console.log('string found is'+wording.indexOf('fun') > -1);  //false
 }
 charFind('programming is fun');
 
 console.log('***********************************');
 
-//13.Find out if number is prime or not
+//13.Find out if given number is prime or not
 //Prime numbers are numbers that are bigger than one and cannot be divided evenly by any other number except 1 and itself.
 //Prime number should not be divisible by 2
 //Ex: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61,
@@ -545,13 +619,13 @@ console.log('***********************************');
      }
      return value > 1;
  }
- console.log('prime/not-prime:  '+isPrime(5));
- console.log('-----------------------------');
+ console.log('prime/not-prime:  '+isPrime(5)); //"prime/not-prime:  true"
 
- //********************************************
+ console.log('***********************************');
 
-  // 14.Find absolute value of a number
-  //Logic is if number value is less than 0 then it's positive equivalent will be returned if not same number returns
+
+//14.Find absolute value of a number
+//Logic is if number value is less than 0 then it's positive equivalent will be returned if not same number returns
 
   function absolute(numnum){
       if (numnum < 0){
@@ -564,11 +638,9 @@ console.log('***********************************');
 
 console.log('***********************************');
 
-// 15.Remove Duplicate ones from array
-//The indexOf() method returns the position of the first occurrence of a specified value in a string.
+// 15.Remove Duplicate ones from an array
+// The indexOf() method returns the position of the first occurrence of a specified value in a string.
 // This method returns -1 if the value to search for never occurs.
-
-
 
 let ab = ["Banana", "Orange", "Apple", "Mango", "Mango", "Apple"];
 let bb = [];
@@ -679,7 +751,7 @@ function isPalindrome(string) {
       return lettersArr.join('') === lettersArr.reverse().join('');
 }
 
-console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ isPalindrome("Madam I'm Adam"));
+console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ isPalindrome("Madam I'm Adam")); //"is 'Madam I'm Adam'is Palindrome?-- true"
 
 // Another way to check Palindrome using Regex
 
@@ -693,8 +765,9 @@ function palin(str){
             }else
             return false;
     }
-console.log(palin("Madam I'm Adam"));
+console.log(palin("Madam I'm Adam")); //true
 
+// Another way
 function aisPalindrome(str){
   str = str.toLowerCase();
   var str1 = str.replace(/[^a-z]/gi, '');
@@ -703,16 +776,16 @@ function aisPalindrome(str){
  while(newStr.length > 0){
    result = result+newStr.pop()
  }
-  console.log('input string:'+str1);
-  console.log('reversed string:'+result);
+  console.log('input string:'+str1);    //"input string:madamimadam"
+  console.log('reversed string:'+result);  //"reversed string:madamimadam"
   return result == str1;
 
 }
-console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ aisPalindrome("Madam I'm Adam"));
+console.log('is \'Madam I\'m Adam\'is Palindrome?-- '+ aisPalindrome("Madam I'm Adam")); //true
 
 console.log('***********************************');
 
-// 17. JSON.stringify() method converts a JavaScript Object value to a JSON string
+//17. JSON.stringify() method converts a JavaScript Object value to a JSON string
 //When receiving data from a web server, the data is always a string.
 
 var objectLiteral = {
@@ -729,7 +802,7 @@ console.log('***********************************');
 
 
 
-// 18.Parse the data with JSON.parse(), and the data becomes a JavaScript object.
+//18. Parse the data with JSON.parse(), and the data becomes a JavaScript object.
 
 var jsonValue = JSON.parse('{ "firstname": "Mary", "isAProgrammer": true }');
 
@@ -737,7 +810,7 @@ console.log("JSON.parse('{ \"firstname\": \"Mary\", \"isAProgrammer\": true }'" 
 console.log(jsonValue);
 console.log('***********************************');
 
-// 19.Fastest way to find duplicates between two arrays javascript
+//19. Fastest way to find duplicates between two arrays javascript
 
 var resultArray = [];
 
@@ -817,7 +890,7 @@ console.log('--------------------');
     return resultArray;
   }
 
-console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`);
+console.log( `${single}, After removing duplicates: ${removeDuplicate(newSingle)}`); //After removing duplicates: 1,5,22,33,45,99"
 
 //Get Unique values(remove duplicates) from single array using array filter method
 function uniqueValuesArray(arr){
@@ -901,11 +974,11 @@ var goOutside = weather.filter(function(temp){
 console.log('Numbers more than 44 :' +goOutside);
 console.log('***********************************');
 
-//22. filter method to retrieve data from array object
+//22.Filter method to retrieve data from array object
 var forcast = [
-    { day:'Mon',sun:true},
-    {day:'Tue', sun:false},
-    {day:'Wed', sun:true}
+    { day:'Mon', sun:true},
+    { day:'Tue', sun:false},
+    { day:'Wed', sun:true}
 ]
 var sunnyDay = forcast.filter(function(data){
 return data.sun;
@@ -933,8 +1006,8 @@ var shout = greetings.map(function(greet){
 //return hiShout.shift();
 })
 
-console.log(shout.pop());
-console.log(shout);
+console.log(shout.pop());  //THANKS
+console.log(shout);    //["HI", "HELLO", "HEY"]
 
 console.log('***********************************');
 
@@ -952,11 +1025,12 @@ function isPermutation (strA, strB){
 
 }
 
-console.log(isPermutation('baseball','ballbase'));
+console.log(isPermutation('baseball','ballbase')); //true
+
 console.log('***********************************');
 
 
-// 25. Add up to a given number
+//25. Add up to a given number
 function addUpTo(n) {
   let total = 0;
   for (let i = 1; i <= n; i++) {
@@ -964,7 +1038,7 @@ function addUpTo(n) {
   }
   return total;
 }
-console.log('Add up to a given number 6:'+addUpTo(6));
+console.log('Add up to a given number 6:'+addUpTo(6)); //"Add up to a given number 6:21"
 
 //Second way to add
  function addUpTo1(n) {
@@ -974,8 +1048,8 @@ console.log(addUpTo1(6))
 
 console.log('***********************************');
 
-//26. Count of each character/letter in a string
-
+//26. Count of each character/letter in a string and store in an Object
+//Calculate the frequency of characters in a string. Print each char with its frequency. e.g. For input <abcabc>, output should be <(a,2),(b,2),(c,2)>
 function charCount(str){
     var result = {};
     var newStr = str.toLowerCase();
@@ -996,7 +1070,7 @@ function charCount(str){
 
  }
 console.log('character count in a given string: ');
-console.log(charCount('Your PIN numberr is 1234'));
+console.log(charCount('Your PIN numberr is 1234')); // Object {1: 1,2: 1,3: 1,4: 1,b: 1,e: 1,i: 2, m: 1,n: 2,o: 1,p: 1,r: 3, s: 1, u: 2, y: 1 }
 
 // Count of each character/letter in a string using Map object
 //NOTE: to check word count in a sentence/string(welcome to world welcome)  split the str(arr = str.split(' '); then loop thru(var i of arr) //welcome 2, to 1 world 1
@@ -1024,7 +1098,7 @@ console.log(charCount('welcome')); //e 2, w 1,c 1, m 1
 
 console.log('***********************************');
 
-// 27.Count unique values in Number array
+//27.Count unique values in Number array
 function countUniqueValues(arr){
     if(arr.length === 0) return 0;
     var i = 0;
@@ -1093,10 +1167,10 @@ function longest(seq){
         }
         prev_char = current;
     }
-    console.log('Max consecutive in string: ' +seq);
+    console.log('Max consecutive in string: ' +seq); //"Max consecutive in string: aaeeeedd"
     return (max_char +':'+ max_count);
 }
-console.log(longest('aaeeeedd'));
+console.log(longest('aaeeeedd')); //"e:4"
 
 console.log('***********************************');
 
@@ -1109,15 +1183,15 @@ console.log('***********************************');
 var a = [4,6,5,0,1,3,2];
 var b = [0, -2, -1, 4, 6,3,3,2,1];
 var n = 5;
+console.log('Pairs whose sum is 5')
 		for(var i = 0; i< a.length; i++)
 			for(var j= 0; j<b.length; j++)
 			{
 				if(a[i]+b[j] == n)
 				{
-				    console.log('Pairs whose sum is 5')
 					console.log("( "+ a[i] + " , " + b[j] + " )");
 				}
-			}
+			}                                 //"Pairs whose sum is 5" "( 4 , 1 )", "( 6 , -1 )", "( 5 , 0 )", "( 1 , 4 )","( 3 , 2 )"
 console.log('***********************************');
 
 //30. Given a string say "I am a human being" the output should reverse all letters of each word but not the whole string as such.
@@ -1138,7 +1212,7 @@ function reverseWord(str){
            return resultStr.join(' ');
      }
 }
-console.log('Reverse all letters of each word: '+ reverseWord('I am Human'));
+console.log('Reverse all letters of each word: '+ reverseWord('I am Human'));  //"Reverse all letters of each word:  I  m a  n a m u H"
 
 console.log('***********************************');
 
@@ -1166,7 +1240,7 @@ console.log('***********************************');
 
 
 
-//32.Ascending, Descending  order NOT using sort() method
+//32.Ascending, Descending Number Array  NOT using sort() method
 console.log('Ascending,Descending order not using sort()');
 console.log('Ascending order');
 function sorter(array){
@@ -1189,7 +1263,7 @@ function sorter(array){
 
 //console.log(sorter([4, 10, 2, 9, 11, 3, 13, 5]));
 //console.log(sorter([20, 20, 31, 56, 1, 12, 12]));
-console.log(sorter([3, -9, -12,  -1, 12, 100,9,4]));
+console.log(sorter([3, -9, -12,  -1, 12, 100,9,4])); //[-12, -9, -1, 3, 4, 9, 12, 100]
 
 //Sort numbers in Descending order
 
@@ -1212,13 +1286,36 @@ function sorterDesc(array)
     return array;
 }
 
-console.log(sorterDesc([4, 10, 2, 9, 11, 3, 13, 5]));
+console.log(sorterDesc([4, 10, 2, 9, 11, 3, 13, 5])); //[13, 11, 10, 9, 5, 4, 3, 2]
+
+// Sort string alphabetically
+function sortString(array){
+  var array = array.split('');
+ var swap;
+ for (var i = 0; i < array.length; i++)
+    {
+        for (var j = i+1; j < array.length; j++)
+        {
+            if (array[i] > array[j])
+            {
+                swap = array[i];
+                array[i] = array[j];
+                array[j] = swap;
+            }
+        }
+    }
+   return array.join('');
+}
+
+console.log('Sorting string alphabetically '+sortString('welcome')); //"ceelmow"
+
 console.log('***********************************');
-//----------------------------------------
+
 //33. Max character repeated in a string
 //Given a string the character that is most commonly used in a string
 // Step 1: extract characters, count from string and add to a new object(charMap)
 // Step 2: Loop through the object to find the character and count
+
 function charMapping(str){
     const charMap = {};
     var max = 0;
@@ -1248,8 +1345,8 @@ function charMapping(str){
     return (`${maxChar} -  ${max}`);
 }
 
-console.log('Max character repeated in a string: ' +charMapping('hello world'));
-console.log('***********************************');
+console.log('Max character repeated in a string: ' +charMapping('hello world')); //"Max character repeated in a string: l -  3"
+
 
 // above question using split method and storing in array instead of Object
 
@@ -1281,12 +1378,12 @@ function letterCount(str){
     return (`Max repeated character is :' ${maxChar} - ${max} `);
 }
 
-console.log(letterCount('hello wwwworld'));
+console.log(letterCount('hello wwwworld'));    //"Max repeated character is :' w - 4 "
 
 console.log('***********************************');
 
 // 34. Max character repeated in a string using split(char) method
-//The split() method is used to split a string into an array of substrings, and returns the new array.
+// The split() method is used to split a string into an array of substrings, and returns the new array.
 // Here the logic is when split by char, substring created as a result has length more than max that means that character is the most repeated character.
 
 var getMax = function (str) {
@@ -1303,16 +1400,17 @@ var getMax = function (str) {
     return ('Max repeated character : '+maxChar );
 };
 
-console.log(getMax('hello world'));
+console.log(getMax('hello world'));   //"Max repeated character : l"
 
 // Get count of given character in a string
 var strr = 'ahahjjakkallaa';
 var re =strr.split('a').length-1;
-console.log(strr+' :'+re);
+console.log(strr+' :'+re);      //"ahahjjakkallaa :6"
 
 console.log('***********************************');
 
 //35. Find if characters in words in an array are unique
+
 function repeat(str){
     str.forEach(function(char){
       //  console.log(char);
@@ -1329,7 +1427,7 @@ function repeat(str){
     })
 }
 
- console.log(repeat(['google','yahoo','amzon']));
+ console.log(repeat(['google','yahoo','amzon']));  //"google: duplicate letters found" "yahoo: duplicate letters found" "amzon: UNIQUE letters found"
  console.log('***************************');
 
 
@@ -1368,7 +1466,7 @@ function texting(arr){
     console.log('Reversed array is :')
     return arr;
 }
-console.log(texting(c));
+console.log(texting(c)); //[6, 2, 7, 1, 6]
 
 // Another way to reverse numbers.
 //Steps: Just loop through starting from last num(d.length)
@@ -1380,10 +1478,10 @@ for (var i = d.length-1; i >= 0; i-- ){
 dd.push(d[i]);
 
 }
-console.log(`Reverse of ${d} : ${dd}`);
+console.log(`Reverse of ${d} : ${dd}`);  //"Reverse of 6,1,7,2 : 2,7,1,6"
 console.log('***********************************');
 
-//38. sort the words that are anagrams in an array
+//38. Sort the words that are anagrams in an array
 //anagram is a word or a phrase made by rearranging the letters of another word or phrase
 //Steps: For each loop through array; store words in object;
 
@@ -1401,8 +1499,8 @@ var anaPerm = {};
 return anaPerm
 
 }
-console.log(perm(['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop', 'cinema','iceman']));
-console.log('-------------------');
+console.log(perm(['map', 'art', 'how', 'rat', 'tar', 'who', 'pam', 'shoop', 'cinema','iceman']));  // Object{aceimn:["cinema","iceman"], amp:["map","pam"],art:["rat","tar"],hoops:["shoop"],how:["how","who"]
+
 
 // Just to check if two words are Anagram
 
@@ -1422,7 +1520,10 @@ function isAnagram(str1, str2){
 console.log(isAnagram('act','cat'));
 console.log('***********************************');
 
-//39. Print stars in a row (* ** *** **** *****)
+//39.Print stars in a row  (*
+                           //**
+                           //***
+                           //****)
 
  function showstars(rows){
  for (let i = 1; i <= rows; i++){
@@ -1433,9 +1534,9 @@ console.log('***********************************');
         console.log(pattern);
     }
 }
-console.log(showstars(5));
+console.log(showstars(4));
 console.log('***********************************');
-//-----------------------------------
+
 //40. Find the Prime numbers till the number
 //Prime numbers are numbers that are bigger than one and cannot be divided evenly by any other number except 1 and itself.
 //Prime number should NOT be divisible by 2
@@ -1455,11 +1556,11 @@ function showPrimes(limit){
     }
  }
 
-showPrimes(10);
+showPrimes(10); //2,3,5,7
 
 console.log('***********************************');
 
-//41. Count occurrence of number in an Array
+//41. Count occurrence of number in an Array (Ex:count of 5 in 1,2,3,4,5,5,5 is: 3")
 
 const numbersArray = [1, 2, 3, 4, 5, 5, 5];
 function countOccurrences(array, searchElement) {
@@ -1470,7 +1571,7 @@ function countOccurrences(array, searchElement) {
    return count;
  }
 const count = countOccurrences(numbersArray, 5);
-console.log('count of 5 in '+numbersArray +' is: '+count);
+console.log('count of 5 in '+numbersArray +' is: '+count); //"count of 5 in 1,2,3,4,5,5,5 is: 3"
 
 //Using reduce method
 function countOccrReduce(arr,num){
@@ -1485,8 +1586,6 @@ function countOccrReduce(arr,num){
 countOccrReduce([1, 2, 3, 4, 5, 5, 5], 5);
 
 
-
-
 // Count occurrence of number using Reduce method
 //The reduce() method reduces the array to a single value.
 //The reduce() method executes a provided function for each value of the array (from left-to-right).
@@ -1496,14 +1595,15 @@ countOccrReduce([1, 2, 3, 4, 5, 5, 5], 5);
 const stringArray = ['cat','tap','cat','map'];
 function countOccurrenceReduce(array, searchElement) {
  var result = array.reduce(function(accumulator, current ){
-    if (current == searchElement)
+    if (current == searchElement){
         accumulator++;
+        }
       return accumulator
     },0)
   return result
 }
 const countReduce = countOccurrenceReduce(stringArray, 'cat');
-console.log('Count of string \'cat\' in Array : ' +stringArray +' is:' +countReduce);
+console.log('Count of string \'cat\' in Array : ' +stringArray +' is:' +countReduce); //"Count of string 'cat' in Array : cat,tap,cat,map is:2"
 console.log('***********************************');
 
 //42.Moving an element in an array to a given position
@@ -1527,7 +1627,7 @@ function move(array, index, offset) {
   return array;
 }
 const output = move(numbersMove, 0, 1);
-console.log('Moving an element 0 to 1 index in an array [1,2,3,4]  :'+output);
+console.log('Moving an element 0 to 1 index in an array [1,2,3,4]  :'+output);  //"Moving an element 0 to 1 index in an array [1,2,3,4]  :2,1,3,4"
 
 // Another easy way for above problem
 // Assign fromIndex to variable "element" i.e 1 .
@@ -1541,7 +1641,7 @@ function arraymove(arr, fromIndex, toIndex) {
     return arr;
 }
 
-arraymove([1,2,3,4,5],0,2);
+arraymove([1,2,3,4,5],0,2);  //"Moving element from 0 to 2 in an array [1,2,3,4,5]: 2,3,1,4,5 "
 
 console.log('***********************************');
 
@@ -1552,14 +1652,13 @@ const numbersExcept = [1, 2, 3, 4,5];
 function except(array, excluded) {
     const outputExpect = [];
     for (let element of array){
-        if (!excluded.includes(element))
+        if (!excluded.includes(element))  //you can use if (excluded.indexOf(element) ==-1)
         outputExpect.push(element);
     }
     return outputExpect;
 }
-const outputResult = except(numbersExcept, [1, 5]);
 
-console.log('Exclude [1, 5] from [1,2,3,4,5]  :'+outputResult);
+console.log('Exclude [1, 5] from [1,2,3,4,5]  :'+except(numbersExcept, [1, 5])); //"Exclude [1, 5] from [1,2,3,4,5]  :2,3,4"
 console.log('***********************************');
 
 
@@ -1571,11 +1670,11 @@ function chopper(arr, excess){
     return arr
 }
 
-console.log(chopper(chop,2));
+console.log(chopper(chop,2));   //["jan", "feb", "march", "april", "may"]
 console.log('***********************************');
 
 
-//45. Repeat a String with for loop for given number of times
+//45. Repeat a String with for loop for given number of times in a row
 
 function repeatWord(str,no){
 let repeatStr = '';
@@ -1585,7 +1684,7 @@ let repeatStr = '';
     return repeatStr;
 }
 
-console.log('Repeat string: '+repeatWord('car', 4));
+console.log('Repeat string: '+repeatWord('car', 4)); //"Repeat string: carcarcarcar"
 console.log('***********************************');
 
 //46. Write a program that prints all the numbers from 1 to 20.
@@ -1607,7 +1706,7 @@ function FizBizz(){
         else console.log(i);
     }
 }
-FizBizz();
+FizBizz();  // 1 2 "Fizz" 4 "Bizz" "Fizz" 7 8 "Fizz" "Buzz" 11 "Fizz" 13 14 "FizzBuzz"
 console.log('***********************************');
 
 //47. Fibonacci sequence: [0, 1, 1, 2, 3, 5, 8, 13, 21]
@@ -1638,7 +1737,7 @@ function fib(n){
 }
 
 //console.log(`Element on Fib series in given Index is :`+fib(8));
-fib(8);
+fib(8);   //"Fibonacci series for 8 is: 0,1,1,2,3,5,8,13,21"
 
 // Fib series using Recursive method
 
@@ -1684,9 +1783,32 @@ function merge (array1, array2) {
 }
 console.log('sort the numbers in an array using MergeSort method:')
 console.log(mergeSort([6000, 34, 203, 3, 746, 200, 984, 198, 764, 1, 9, 1]));
+
+//49. Merging two sorted arrays
+function merging (array1, array2) {
+    var result = [];
+    while (array1.length && array2.length) {
+      var minElem;
+      if (array1[0] < array2[0]){
+       result.push( array1.shift());
+      }else
+       result.push (array2.shift());
+    }
+
+    if (array1.length) {
+      result = result.concat(array1)
+    }
+    else {
+      result = result.concat(array2)
+    }
+    return result;
+}
+console.log('sort the numbers in an array using MergeSort method:')
+console.log(merging([1,6,8],[3,5,9,10])); //[1, 3, 5, 6, 8, 9, 10]
+
 console.log('***********************************');
 
-//49.Capitalize first character in a word in a sentence
+//50.Capitalize first character in a word in a sentence
 
 function firstCharCapital(word){
     let newWord = word.split(' ');
@@ -1703,21 +1825,21 @@ console.log(firstCharCapital( 'a capital of america'));
 
 console.log('***********************************');
 
-//50. Number of vowels in a string
+//51. Number of vowels in a string
 
 function vowel(str){
     var newStr = str.toLowerCase();
     let count = 0;
-    let checker = ['a','e','i','o','u'];
+    let checker = ['a','e','i','o','u']; //you can use string 'aeiou' everything remains same
     for (let char of newStr){
-        if(checker.includes(char)){
+        if(checker.includes(char)){  // you can use if(checker.indexOf(char) >-1) instead of includes
             count++
         }
     }
     console.log(`Number of vowels in string using 'string.includes' method: ${str}`)
     return count;
 }
-console.log(vowel('pTioue'));
+console.log(vowel('pTioue')); //4
 
 
 // Find vowel count using Regex
@@ -1733,7 +1855,7 @@ function vowelRegex(str){
     return countee;
 }
 
-console.log(vowelRegex('Mnefiyo'));
+console.log(vowelRegex('Mnefiyo')); //3
 
 //Find Vowel count using str.match(regex) method
 function regexMatch(str){
@@ -1743,11 +1865,11 @@ function regexMatch(str){
     else return 0;
 }
 
-console.log(regexMatch('oiuoiuoiu'));
+console.log(regexMatch('oiuoiuoiu'));  //9
 
 console.log('***********************************');
 
-//51.Non-Repeating first character/integer in a string/array
+//52.Non-Repeating first character/integer in a string/array
 
 function nonRepeat(str){
     for(var i = 0; i < str.length; i++){  //you can use for..of loop too
@@ -1761,16 +1883,16 @@ function nonRepeat(str){
 
 
 console.log(nonRepeat('@lovelo')); //@
-console.log(nonRepeat([2,2,4,5,5,6,7]));
+console.log(nonRepeat([2,2,4,5,5,6,7]));  // 4
 
 console.log('***********************************');
 
-//52.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
+//53.Given an array say [0,1,2,3,5,6,7,11,12,14,20]
 //  given a number say 5.
 //  Now find the sum of elements which sum/add to 5
 //  eg:2+3=5, 0+5=5 etc.
-function sumArr(arr){
-    var sum = 5;
+function sumArr(arr,n){
+    var sum = n;
     var result = 0;
     //console.log(arr);
     for(var i = 0; i < arr.length; i++ ){
@@ -1782,10 +1904,10 @@ function sumArr(arr){
                 }
            }
     }
-    return (arr[i],arr[j]);
+
 }
 
-console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20]));
+console.log(sumArr([0,1,1,2,3,5,6,7,3,4,11,12,14,20],5)); //[0,5],[1,4],[2,3]
 console.log('***********************************');
 
 console.log(['a','b']+['c','d']);
@@ -1801,7 +1923,11 @@ console.log(typeof(parseInt('1')));
 
 console.log('***********************************');
 
-//53. Find second minimum number from Array(My way)
+//54. Find second minimum number from Array(My way)
+//First do ascending order of numbers in an array
+//Now sort it to get unique numbers in resultt array
+//Then get the second number by checking resultt[1]
+
 var arrSec = [1,5,3,1,7,100,24,45,99,0];
 //var newArrSec = arrSec.sort(function(a,b){
 //  return a-b
@@ -1819,28 +1945,31 @@ for (var i = 0; i < arrSec.length; i++){
 
 }
 
-console.log(arrSec);
+console.log(arrSec);    //[0, 1, 1, 3, 5, 7, 24, 45, 99, 100]
 for (var i of arrSec){
  if(resulttt.indexOf(i) == -1){
    resulttt.push(i);
  }
 }
 
-console.log(resulttt);
+console.log(resulttt);  //[0, 1, 3, 5, 7, 24, 45, 99, 100]
 //console.log(newArrSec);
-console.log('second minimum element in array : '+resulttt[1]);
-console.log('second minimum element in array : '+resulttt.splice(resulttt.length-2,1));
+console.log('second minimum element in array : '+resulttt[1]); //"second minimum element in array : 1"
+console.log('second minimum element in array : '+resulttt.splice(resulttt.length-2,1)); //"second minimum element in array : 99"
 
 console.log('***********************************');
 
-//54.Find second largest number in Array
+//55.Find second largest number in Array
+//Assign first and second LargeNum = first element in the array i.e arr[0]
+//Traverse thru the array > If current element is greater than flarge, assign that element to fLarge(fLarge=arr[i]) > assign sLarge=fLarge
+//Else if current element is greater than fLarge then just update the sLarge(sLarge=arr[i])
 
 function findSecondLargeNumber(arr){
 
 	var fLargeNum = arr[0];
 	var sLargeNum = arr[0];
 
-	for(var i=0; i<arr.length; i++){
+	for(var i=1; i<arr.length; i++){
 		if(arr[i] > fLargeNum){
 			sLargeNum = fLargeNum;
 			fLargeNum = arr[i];
@@ -1854,14 +1983,14 @@ function findSecondLargeNumber(arr){
 	return sLargeNum;
 }
 
-console.log(findSecondLargeNumber([1,5,3,1,7,100,24,65]));
+console.log(findSecondLargeNumber([1,5,3,1,7,100,24,65])); //65
 console.log('***********************************');
 
-//55.Replacing character/space in a string with something else
+//56.Replacing character/space in a string with something else
 var str = 'welcome to the world';
-console.log(str.split(' ').join('*'));
-console.log(str.replace(/ /g,'*'));
-console.log(str.replace(/welcome/g,'come'));
+console.log(str.split(' ').join('*'));       //"welcome*to*the*world"
+console.log(str.replace(/ /g,'*'));          //"welcome*to*the*world"
+console.log(str.replace(/welcome/g,'come')); //"come to the world"
 
 // replacing char using for loop.
 function addStar(str){
@@ -1875,6 +2004,97 @@ for( var i=0; i < str.length; i++){
  return newStr;
 
 }
-console.log(addStar('welcome to the world'));
+console.log(addStar('welcome to the world'));  //"welcome*to*the*world"
 console.log('***********************************');
+
+//57. Write a program to move all zeros to the end of the Array using for loop.
+//Loop thru the array and count the non-zero numbers in array
+console.log('Move zeros to the last:  ')
+
+function moveZero(arr){
+var count = 0;
+var temp;
+for(var i = 0; i < arr.length; i++){
+  if(arr[i]!=0){
+    temp = arr[i];
+    arr[i] = arr[count];
+    arr[count] = temp;
+    count++
+  }
+}
+  return arr;
+}
+console.log(moveZero([1,0,2,0,3,0,4]));  //[1, 2, 3, 4, 0, 0, 0]
+
+//Write a program to move all zeros to the end of the Array
+//Traverse the array if element is zon-zero then replace the element at index'count' with this element; increase the count
+//No all non-zero will be moved to the left
+//Now to move zeros to the end, loop thru from count till arr.length and assign arr[i] to 0
+
+function moving(arr){
+  var count = 0;
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] != 0){
+     arr[count] = arr[i]
+       count++
+    }
+  }
+
+//Now to move zeros to the end, loop thru from count till arr.length and assign arr[i] to 0
+for( var i=count; i< arr.length; i++){
+  arr[i]=0
+}
+  return arr
+}
+
+console.log(moving([2,0,1,4,0,5,0,6,7]))   //[2, 1, 4, 5, 6, 7, 0, 0, 0]
+
+//Move zero to last in a array using sort()
+function zeroToLast(array){
+var result = array.sort(function(a, b) {
+        if(a==0 && b!=0)
+            return 1;
+        else if(b==0 && a!=0)
+            return -1;
+        else
+            return 0;
+    });
+ return result;
+}
+console.log(zeroToLast([0,2,6,0,666,-6,142,0,1,-10,3,0]));   //[2, 6, 666, -6, 142, 1, -10, 3, 0, 0, 0, 0]
+console.log('***********************************');
+
+//58. Segregate zeros and ones in an array
+
+function segregateZeroOnes(arr){
+var count = 0;
+for(var i = 0; i < arr.length; i++){
+ // console.log(arr[i]);
+  if(arr[i] == 0){
+    count++
+  }
+}
+
+  for( var i = 0; i < arr.length; i++){
+    if (i <= count){
+      arr[i]=0
+    }else {
+      arr[i]=1
+    }
+  }
+  return arr
+}
+console.log('Segregate 0 and 1s:[1,0,1,0,1,0,0,0,1] ')
+console.log(segregateZeroOnes([1,0,1,0,1,0,0,0,1]));     //[0, 0, 0, 0, 0, 0, 1, 1, 1]
+console.log('***********************************');
+
+/*Print the first and final occurrence of a number in a sorted array of integers.
+e.g. int[] list = {1,2,3,4,5,5,7,8}
+
+
+Write code to count the duplicate characters in a given string.
+
+
+
+Given are two ordered lists of size 7 and 3. The first list has three vacant spots in the end. Merge them in a sorted manner with minimum no. of steps.*/
 
